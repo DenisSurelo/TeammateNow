@@ -13,16 +13,16 @@
   --violet-dim:#2D1F5E;--cyan:#00D4F0;--text:#E8EAF0;--muted:#6B7A99;
   --muted2:#8892AA;--danger:#F04040;--success:#22D18A;--gold:#F5A623;--warn:#F59E0B;
 }
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
+ 
 /* ── LOADER ── */
 #global-loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:1rem}
 #global-loader .logo{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:#fff}
 #global-loader .logo span{color:var(--violet)}
 .spinner{width:36px;height:36px;border:3px solid var(--border2);border-top-color:var(--violet);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
+ 
 /* ── AUTH ── */
 #auth-screen{display:none;align-items:center;justify-content:center;min-height:100vh;padding:1rem;position:relative;overflow:hidden}
 #auth-screen::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.18) 0%,transparent 70%);top:-100px;left:-100px;pointer-events:none}
@@ -48,7 +48,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .btn-primary:active{transform:scale(.98)}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed}
 .auth-error{background:rgba(240,64,64,.12);border:1px solid rgba(240,64,64,.3);border-radius:8px;padding:.6rem .9rem;color:var(--danger);font-size:13px;margin-bottom:1rem;display:none}
-
+ 
 /* ── BAN SCREEN ── */
 #ban-screen{display:none;align-items:center;justify-content:center;min-height:100vh;padding:1rem;background:var(--bg)}
 .ban-box{background:var(--card);border:1px solid rgba(240,64,64,.4);border-radius:20px;padding:2.5rem 2rem;width:100%;max-width:420px;text-align:center}
@@ -61,9 +61,9 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .ban-appeal a:hover{background:rgba(88,101,242,.25);color:#fff}
 .ban-appeal a svg{width:18px;height:18px}
 .ban-appeal-hint{font-size:12px;color:var(--muted);margin-top:.6rem}
-
+ 
 /* ── APP ── */
-#app{display:none}
+#app{display:none;flex:1;flex-direction:column}
 header{background:rgba(8,11,19,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .header-logo{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:1px;display:flex;align-items:center;gap:.5rem}
 .header-logo .dot{color:var(--violet)}
@@ -75,18 +75,28 @@ header{background:rgba(8,11,19,.9);backdrop-filter:blur(12px);border-bottom:1px 
 .btn-admin{background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.4);border-radius:10px;color:var(--gold);padding:.5rem 1rem;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;display:none;align-items:center;gap:.4rem;position:relative}
 .btn-admin:hover{background:rgba(245,166,35,.25)}
 .admin-notif-dot{position:absolute;top:-4px;right:-4px;width:10px;height:10px;background:var(--danger);border-radius:50%;border:2px solid var(--bg);display:none}
-.avatar-btn{width:38px;height:38px;border-radius:50%;background:var(--violet-dim);border:2px solid var(--violet);color:var(--violet-light);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;font-family:'Rajdhani',sans-serif}
-.avatar-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:.5rem;min-width:180px;display:none;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+ 
+/* ── AVATAR BUTTON ── */
+.avatar-btn{width:38px;height:38px;border-radius:50%;background:var(--violet-dim);border:2px solid var(--violet);color:var(--violet-light);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;font-family:'Rajdhani',sans-serif;overflow:hidden;flex-shrink:0}
+.avatar-btn img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:.5rem;min-width:190px;display:none;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .avatar-menu.open{display:block}
 .avatar-menu-item{padding:.6rem .9rem;border-radius:8px;cursor:pointer;font-size:14px;color:var(--muted2);display:flex;align-items:center;gap:.6rem;transition:.15s}
 .avatar-menu-item:hover{background:var(--border);color:var(--text)}
 .avatar-menu-item.danger:hover{background:rgba(240,64,64,.12);color:var(--danger)}
 .avatar-menu-sep{height:1px;background:var(--border);margin:.3rem 0}
-main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
+ 
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher{display:flex;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3px;overflow:hidden}
+.lang-btn{border:none;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;padding:.25rem .45rem;border-radius:6px;cursor:pointer;letter-spacing:.5px;transition:.15s}
+.lang-btn:hover{color:var(--text)}
+.lang-btn.active{background:var(--violet);color:#fff}
+ 
+main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;flex:1;width:100%}
 .page-title{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:600;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
 .page-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-
+ 
 /* PLAYER CARD */
 .player-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem;position:relative;transition:.2s;overflow:hidden}
 .player-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--game-color,var(--violet))}
@@ -113,12 +123,13 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
 .contact-link.discord svg{color:#5865F2}
 .contact-link.telegram svg{color:#2AABEE}
 .card-author{margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:.4rem}
-.author-avatar{width:20px;height:20px;border-radius:50%;background:var(--violet-dim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--violet-light);font-family:'Rajdhani',sans-serif;flex-shrink:0}
+.author-avatar{width:22px;height:22px;border-radius:50%;background:var(--violet-dim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--violet-light);font-family:'Rajdhani',sans-serif;flex-shrink:0;overflow:hidden}
+.author-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .empty-state{grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--muted)}
 .empty-state svg{width:64px;height:64px;opacity:.3;margin:0 auto 1rem;display:block}
 .empty-state h3{font-family:'Rajdhani',sans-serif;font-size:1.3rem;color:var(--muted2);margin-bottom:.5rem}
 .empty-state p{font-size:14px}
-
+ 
 /* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
 .modal-overlay.open{opacity:1;pointer-events:all}
@@ -152,14 +163,25 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
 .rules-check-label{font-size:13px;color:var(--muted2);line-height:1.5;cursor:pointer}
 .rules-check-label strong{color:var(--violet-light)}
 .rules-err{font-size:12px;color:var(--danger);margin-top:.4rem;display:none}
-
+ 
 /* REPORT */
 .report-reasons{display:grid;gap:.4rem;margin:1rem 0}
 .report-reason-opt{display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:13px;color:var(--muted2);transition:.15s;background:var(--surface)}
 .report-reason-opt:hover{border-color:var(--border2);color:var(--text)}
 .report-reason-opt.selected{border-color:var(--warn);background:rgba(245,159,11,.08);color:var(--warn)}
 .report-reason-opt input{accent-color:var(--warn);cursor:pointer}
-
+ 
+/* ── AVATAR UPLOAD MODAL ── */
+.avatar-upload-area{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:1.5rem}
+.avatar-preview-circle{width:96px;height:96px;border-radius:50%;background:var(--violet-dim);border:3px solid var(--violet);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-size:2.5rem;font-weight:700;color:var(--violet-light)}
+.avatar-preview-circle img{width:100%;height:100%;object-fit:cover}
+.avatar-file-label{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:var(--violet-dim);border:1px solid var(--violet);border-radius:10px;color:var(--violet-light);font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.avatar-file-label:hover{background:var(--violet);color:#fff}
+.avatar-file-input{display:none}
+.avatar-hint{font-size:12px;color:var(--muted);text-align:center}
+.btn-remove-avatar{padding:.5rem 1rem;background:transparent;border:1px solid rgba(240,64,64,.4);border-radius:10px;color:var(--danger);font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.btn-remove-avatar:hover{background:rgba(240,64,64,.1)}
+ 
 /* ── ADMIN ── */
 #admin-panel{display:none}
 .admin-header{background:rgba(245,166,35,.06);border-bottom:1px solid rgba(245,166,35,.2);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem}
@@ -201,19 +223,30 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
 .ban-dur-opt{border:1px solid var(--border);border-radius:10px;padding:.6rem;text-align:center;cursor:pointer;font-size:13px;color:var(--muted2);transition:.2s;background:var(--surface)}
 .ban-dur-opt:hover{border-color:var(--danger);color:var(--danger)}
 .ban-dur-opt.selected{border-color:var(--danger);background:rgba(240,64,64,.1);color:var(--danger)}
-
+ 
 /* FILTERS */
 .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .filter-chip{padding:.35rem .9rem;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--muted);cursor:pointer;transition:.15s;background:var(--surface);font-weight:500}
 .filter-chip:hover{border-color:var(--border2);color:var(--text)}
 .filter-chip.active{border-color:var(--violet);color:var(--violet-light);background:var(--violet-dim)}
-
+ 
 /* TOAST */
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:.75rem 1.25rem;font-size:14px;font-weight:500;display:flex;align-items:center;gap:.6rem;z-index:2000;transition:.3s;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(34,209,138,.4);color:var(--success)}
 .toast.error{border-color:rgba(240,64,64,.4);color:var(--danger)}
-
+ 
+/* ── FOOTER ── */
+footer{background:var(--card);border-top:1px solid var(--border);padding:1.25rem 1.5rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-logo{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:1px;display:flex;align-items:center;gap:.35rem}
+.footer-logo .dot{color:var(--violet)}
+.footer-credit{font-size:13px;color:var(--muted)}
+.footer-credit span{color:var(--muted2);font-weight:500}
+.footer-discord{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:rgba(88,101,242,.15);border:1px solid rgba(88,101,242,.35);border-radius:10px;color:#7289da;font-size:13px;font-weight:600;text-decoration:none;transition:.2s}
+.footer-discord:hover{background:rgba(88,101,242,.28);color:#fff}
+.footer-discord svg{width:16px;height:16px;flex-shrink:0}
+ 
 @media(max-width:600px){
   header{padding:0 1rem}
   .header-logo .badge-live{display:none}
@@ -225,60 +258,61 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
   .modal-footer{padding:0 1rem 1rem}
   .modal-header{padding:1rem 1rem 1rem}
   .game-selector{grid-template-columns:repeat(3,1fr)}
+  .footer-inner{flex-direction:column;text-align:center;gap:.75rem}
 }
 </style>
 </head>
 <body>
-
+ 
 <!-- LOADER -->
 <div id="global-loader">
   <div class="logo">Teammate<span>Now</span></div>
   <div class="spinner"></div>
 </div>
-
+ 
 <!-- BAN SCREEN -->
 <div id="ban-screen">
   <div class="ban-box">
     <div class="ban-icon">🚫</div>
-    <div class="ban-title">Аккаунт заблокирован</div>
+    <div class="ban-title" data-i18n="banTitle">Аккаунт заблокирован</div>
     <div class="ban-reason" id="ban-reason-text"></div>
     <div class="ban-timer" id="ban-timer-block"></div>
     <div class="ban-appeal">
       <a href="https://discord.gg/kPgHV9a6k" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.053a19.87 19.87 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.62.874-1.275 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-        Обжаловать бан в Discord
+        <span data-i18n="banAppeal">Обжаловать бан в Discord</span>
       </a>
-      <div class="ban-appeal-hint">Перейдите на сервер и создайте тикет в разделе #appeals</div>
+      <div class="ban-appeal-hint" data-i18n="banAppealHint">Перейдите на сервер и создайте тикет в разделе #appeals</div>
     </div>
   </div>
 </div>
-
+ 
 <!-- AUTH -->
 <div id="auth-screen">
   <div class="auth-box">
     <div class="auth-logo">
       <div class="logo-text">Teammate<span class="logo-dot">Now</span></div>
-      <p>Находи тиммейтов в онлайн-играх</p>
+      <p data-i18n="authSubtitle">Находи тиммейтов в онлайн-играх</p>
     </div>
     <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchTab('login')">Войти</button>
-      <button class="auth-tab" onclick="switchTab('register')">Регистрация</button>
+      <button class="auth-tab active" onclick="switchTab('login')" data-i18n="login">Войти</button>
+      <button class="auth-tab" onclick="switchTab('register')" data-i18n="register">Регистрация</button>
     </div>
     <div id="auth-error" class="auth-error"></div>
     <div id="login-form">
-      <div class="form-group"><label class="form-label">Логин</label><input class="form-input" id="login-username" type="text" placeholder="Введите логин" autocomplete="username"></div>
-      <div class="form-group"><label class="form-label">Пароль</label><input class="form-input" id="login-password" type="password" placeholder="Введите пароль" autocomplete="current-password"></div>
-      <button class="btn-primary" id="btn-login" onclick="doLogin()">Войти</button>
+      <div class="form-group"><label class="form-label" data-i18n="username">Логин</label><input class="form-input" id="login-username" type="text" data-i18n-ph="enterLogin" placeholder="Введите логин" autocomplete="username"></div>
+      <div class="form-group"><label class="form-label" data-i18n="password">Пароль</label><input class="form-input" id="login-password" type="password" data-i18n-ph="enterPassword" placeholder="Введите пароль" autocomplete="current-password"></div>
+      <button class="btn-primary" id="btn-login" onclick="doLogin()" data-i18n="login">Войти</button>
     </div>
     <div id="register-form" style="display:none">
-      <div class="form-group"><label class="form-label">Логин</label><input class="form-input" id="reg-username" type="text" placeholder="Придумайте логин"></div>
-      <div class="form-group"><label class="form-label">Пароль</label><input class="form-input" id="reg-password" type="password" placeholder="Минимум 6 символов"></div>
-      <div class="form-group"><label class="form-label">Подтвердите пароль</label><input class="form-input" id="reg-password2" type="password" placeholder="Повторите пароль"></div>
-      <button class="btn-primary" id="btn-register" onclick="doRegister()">Создать аккаунт</button>
+      <div class="form-group"><label class="form-label" data-i18n="username">Логин</label><input class="form-input" id="reg-username" type="text" data-i18n-ph="createLogin" placeholder="Придумайте логин"></div>
+      <div class="form-group"><label class="form-label" data-i18n="password">Пароль</label><input class="form-input" id="reg-password" type="password" data-i18n-ph="minSix" placeholder="Минимум 6 символов"></div>
+      <div class="form-group"><label class="form-label" data-i18n="confirmPassword">Подтвердите пароль</label><input class="form-input" id="reg-password2" type="password" data-i18n-ph="repeatPassword" placeholder="Повторите пароль"></div>
+      <button class="btn-primary" id="btn-register" onclick="doRegister()" data-i18n="createAccount">Создать аккаунт</button>
     </div>
   </div>
 </div>
-
+ 
 <!-- APP -->
 <div id="app">
   <header>
@@ -286,29 +320,45 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
     <div class="header-right">
       <button class="btn-admin" id="admin-btn" onclick="openAdmin()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Админ
+        <span data-i18n="admin">Админ</span>
         <span class="admin-notif-dot" id="admin-notif-dot"></span>
       </button>
       <button class="btn-find" onclick="openModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <span>Найти тиммейта</span>
+        <span data-i18n="findTeammate">Найти тиммейта</span>
       </button>
       <div style="position:relative">
         <div class="avatar-btn" id="avatar-btn" onclick="toggleMenu()">?</div>
         <div class="avatar-menu" id="avatar-menu">
           <div class="avatar-menu-item" id="menu-username" style="color:var(--text);font-weight:500;cursor:default">—</div>
           <div class="avatar-menu-sep"></div>
+          <!-- Language switcher -->
+          <div class="avatar-menu-item" style="cursor:default;gap:.5rem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="lang-switcher" id="lang-switcher">
+              <button class="lang-btn active" onclick="setLang('ru',event)">RU</button>
+              <button class="lang-btn" onclick="setLang('ua',event)">UA</button>
+              <button class="lang-btn" onclick="setLang('en',event)">EN</button>
+            </div>
+          </div>
+          <div class="avatar-menu-sep"></div>
+          <!-- Change avatar -->
+          <div class="avatar-menu-item" onclick="openAvatarModal()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-i18n="changeAvatar">Сменить аватарку</span>
+          </div>
+          <div class="avatar-menu-sep"></div>
           <div class="avatar-menu-item danger" onclick="doLogout()">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            Выйти
+            <span data-i18n="logout">Выйти</span>
           </div>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="filters">
-      <div class="filter-chip active" onclick="setFilter('all',this)">Все игры</div>
+    <div class="filters" id="filters-bar">
+      <div class="filter-chip active" onclick="setFilter('all',this)" data-i18n="allGames">Все игры</div>
       <div class="filter-chip" onclick="setFilter('CS2',this)">🎯 CS2</div>
       <div class="filter-chip" onclick="setFilter('Dota 2',this)">🗡️ Dota 2</div>
       <div class="filter-chip" onclick="setFilter('Brawl Stars',this)">⭐ Brawl Stars</div>
@@ -317,55 +367,66 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
       <div class="filter-chip" onclick="setFilter('Rust',this)">🔧 Rust</div>
       <div class="filter-chip" onclick="setFilter('GTA 5 RP',this)">🌆 GTA 5 RP</div>
     </div>
-    <div class="page-title">Игроки ищут команду</div>
+    <div class="page-title" data-i18n="playersLooking">Игроки ищут команду</div>
     <div class="cards-grid" id="cards-grid">
       <div class="empty-state" style="grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--muted)">
         <div class="spinner" style="margin:0 auto 1rem"></div>
-        <p>Загрузка объявлений...</p>
+        <p data-i18n="loadingAds">Загрузка объявлений...</p>
       </div>
     </div>
   </main>
+  <!-- FOOTER (inside #app so it shows when logged in) -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Teammate<span class="dot">Now</span></div>
+      <div class="footer-credit"><span data-i18n="madeBy">Разработано</span> <span>@bambrakort</span></div>
+      <a class="footer-discord" href="https://discord.gg/kPgHV9a6k" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.053a19.87 19.87 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.62.874-1.275 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Discord
+      </a>
+    </div>
+  </footer>
 </div>
-
+ 
 <!-- ADMIN PANEL -->
 <div id="admin-panel">
   <div class="admin-header">
-    <button class="admin-back" onclick="closeAdmin()">← Назад</button>
-    <h2>⭐ Панель администратора</h2>
+    <button class="admin-back" onclick="closeAdmin()">← <span data-i18n="back">Назад</span></button>
+    <h2>⭐ <span data-i18n="adminPanel">Панель администратора</span></h2>
   </div>
   <div class="admin-body">
     <div class="admin-tabs">
       <div class="admin-tab active" onclick="switchAdminTab('reports',this)">
-        Жалобы <span class="badge" id="reports-badge">0</span>
+        <span data-i18n="reports">Жалобы</span> <span class="badge" id="reports-badge">0</span>
       </div>
-      <div class="admin-tab" onclick="switchAdminTab('users',this)">Пользователи</div>
-      <div class="admin-tab" onclick="switchAdminTab('cards',this)">Объявления</div>
+      <div class="admin-tab" onclick="switchAdminTab('users',this)" data-i18n="users">Пользователи</div>
+      <div class="admin-tab" onclick="switchAdminTab('cards',this)" data-i18n="ads">Объявления</div>
     </div>
     <div class="admin-section active" id="admin-reports"><div id="reports-list"></div></div>
     <div class="admin-section" id="admin-users">
       <table class="admin-table">
-        <thead><tr><th>Логин</th><th>Объявлений</th><th>Статус</th><th>Действия</th></tr></thead>
+        <thead><tr><th data-i18n="username">Логин</th><th data-i18n="adsCount">Объявлений</th><th data-i18n="status">Статус</th><th data-i18n="actions">Действия</th></tr></thead>
         <tbody id="admin-users-body"></tbody>
       </table>
     </div>
     <div class="admin-section" id="admin-cards">
       <table class="admin-table">
-        <thead><tr><th>Автор</th><th>Игра</th><th>Режим</th><th>Ранг</th><th>Действия</th></tr></thead>
+        <thead><tr><th data-i18n="author">Автор</th><th data-i18n="game">Игра</th><th data-i18n="mode">Режим</th><th data-i18n="rank">Ранг</th><th data-i18n="actions">Действия</th></tr></thead>
         <tbody id="admin-cards-body"></tbody>
       </table>
     </div>
   </div>
 </div>
-
+ 
 <!-- CREATE/EDIT MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Найти тиммейта</div>
+      <div class="modal-title" id="modal-title" data-i18n="findTeammate">Найти тиммейта</div>
       <button class="modal-close" onclick="closeModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-body">
-      <div class="section-label">Игра</div>
+      <div class="section-label" data-i18n="game">Игра</div>
       <div class="game-selector">
         <div class="game-opt" data-game="CS2" onclick="selectGame('CS2',this)"><span class="game-emoji">🎯</span>CS2</div>
         <div class="game-opt" data-game="Dota 2" onclick="selectGame('Dota 2',this)"><span class="game-emoji">🗡️</span>Dota 2</div>
@@ -375,14 +436,14 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
         <div class="game-opt" data-game="Rust" onclick="selectGame('Rust',this)"><span class="game-emoji">🔧</span>Rust</div>
         <div class="game-opt" data-game="GTA 5 RP" onclick="selectGame('GTA 5 RP',this)"><span class="game-emoji">🌆</span>GTA 5 RP</div>
       </div>
-      <div id="game-error" class="form-error" style="display:none">Выберите игру</div>
+      <div id="game-error" class="form-error" style="display:none" data-i18n="selectGame">Выберите игру</div>
       <div id="cs2-fields" style="display:none"><div class="field-row">
-        <div class="form-group"><label class="form-label">Режим</label><select class="form-select" id="cs2-mode" onchange="updateCS2Rating()"><option value="">Выберите режим</option><option>Premier</option><option>Faceit</option><option>Matchmaking</option><option>Wingman</option></select><div id="cs2-mode-err" class="form-error" style="display:none">Выберите режим</div></div>
-        <div class="form-group"><label class="form-label" id="cs2-rating-label">Рейтинг</label><select class="form-select" id="cs2-rating"><option value="">Сначала выберите режим</option></select><div id="cs2-rating-err" class="form-error" style="display:none">Укажите рейтинг</div></div>
+        <div class="form-group"><label class="form-label" data-i18n="mode">Режим</label><select class="form-select" id="cs2-mode" onchange="updateCS2Rating()"><option value="" data-i18n="selectMode">Выберите режим</option><option>Premier</option><option>Faceit</option><option>Matchmaking</option><option>Wingman</option></select><div id="cs2-mode-err" class="form-error" style="display:none" data-i18n="selectMode">Выберите режим</div></div>
+        <div class="form-group"><label class="form-label" id="cs2-rating-label" data-i18n="rating">Рейтинг</label><select class="form-select" id="cs2-rating"><option value="" data-i18n="selectModeFirst">Сначала выберите режим</option></select><div id="cs2-rating-err" class="form-error" style="display:none" data-i18n="specifyRating">Укажите рейтинг</div></div>
       </div></div>
       <div id="dota-fields" style="display:none"><div class="field-row">
-        <div class="form-group"><label class="form-label">Режим</label><select class="form-select" id="dota-mode"><option value="">Выберите режим</option><option>Ranked</option><option>Турнирный режим</option><option>All Pick</option><option>Turbo</option></select><div id="dota-mode-err" class="form-error" style="display:none">Выберите режим</div></div>
-        <div class="form-group"><label class="form-label">Ранг / MMR</label><select class="form-select" id="dota-rank"><option value="">Выберите ранг</option><option>Herald (0–720 MMR)</option><option>Guardian (770–1540 MMR)</option><option>Crusader (1540–2310 MMR)</option><option>Archon (2310–3080 MMR)</option><option>Legend (3080–3850 MMR)</option><option>Ancient (3850–4620 MMR)</option><option>Divine (4620–5420 MMR)</option><option>Immortal (5420+ MMR)</option></select><div id="dota-rank-err" class="form-error" style="display:none">Выберите ранг</div></div>
+        <div class="form-group"><label class="form-label" data-i18n="mode">Режим</label><select class="form-select" id="dota-mode"><option value="" data-i18n="selectMode">Выберите режим</option><option>Ranked</option><option>Турнирный режим</option><option>All Pick</option><option>Turbo</option></select><div id="dota-mode-err" class="form-error" style="display:none" data-i18n="selectMode">Выберите режим</div></div>
+        <div class="form-group"><label class="form-label" data-i18n="rankMmr">Ранг / MMR</label><select class="form-select" id="dota-rank"><option value="" data-i18n="selectRank">Выберите ранг</option><option>Herald (0–720 MMR)</option><option>Guardian (770–1540 MMR)</option><option>Crusader (1540–2310 MMR)</option><option>Archon (2310–3080 MMR)</option><option>Legend (3080–3850 MMR)</option><option>Ancient (3850–4620 MMR)</option><option>Divine (4620–5420 MMR)</option><option>Immortal (5420+ MMR)</option></select><div id="dota-rank-err" class="form-error" style="display:none" data-i18n="selectRank">Выберите ранг</div></div>
       </div></div>
       <div id="bs-fields" style="display:none"><div class="field-row">
         <div class="form-group"><label class="form-label">Кубки</label><select class="form-select" id="bs-trophies"><option value="">Выберите диапазон</option><option>0 – 10 000 🏆</option><option>10 001 – 20 000 🏆</option><option>20 001 – 30 000 🏆</option><option>30 001 – 40 000 🏆</option><option>40 001 – 50 000 🏆</option><option>50 001 – 60 000 🏆</option><option>60 001 – 70 000 🏆</option><option>70 001 – 80 000 🏆</option><option>80 001 – 90 000 🏆</option><option>90 001 – 100 000 🏆</option></select><div id="bs-trophies-err" class="form-error" style="display:none">Выберите диапазон</div></div>
@@ -403,424 +464,632 @@ main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
         <div class="form-group"><label class="form-label">RP Сервер</label><select class="form-select" id="gta-server"><option value="">Выберите сервер</option><option>Majestic RP</option><option>GTA5RP (official)</option><option>Qvant RP</option><option>BlackRussia</option><option>Diamond RP</option><option>Advance RP</option><option>Другой сервер</option></select><div id="gta-server-err" class="form-error" style="display:none">Выберите сервер</div></div>
         <div class="form-group"><label class="form-label">Роль / Фракция</label><select class="form-select" id="gta-role"><option value="">Любая</option><option>Мирный житель</option><option>Полиция (LSPD)</option><option>Медик (EMS)</option><option>Криминал (Gang)</option><option>Бизнесмен</option><option>Таксист</option><option>Журналист</option><option>Механик</option></select></div>
       </div></div>
-      <div class="section-label" style="margin-top:1.25rem">Контакты</div>
-      <div class="form-group"><label class="form-label">Discord (ссылка)</label><input class="form-input" id="contact-discord" type="url" placeholder="https://discord.com/users/..."><div class="contact-hint">Ссылка на профиль Discord</div><div id="discord-err" class="form-error" style="display:none"></div></div>
-      <div class="form-group"><label class="form-label">Telegram (ссылка)</label><input class="form-input" id="contact-telegram" type="url" placeholder="https://t.me/username"><div class="contact-hint">Ссылка на профиль Telegram</div><div id="telegram-err" class="form-error" style="display:none"></div></div>
-      <div id="contact-req" class="contact-req">Укажите хотя бы одну ссылку для связи</div>
+      <div class="section-label" style="margin-top:1.25rem" data-i18n="contacts">Контакты</div>
+      <div class="form-group"><label class="form-label">Discord</label><input class="form-input" id="contact-discord" type="url" placeholder="https://discord.com/users/..."><div class="contact-hint" data-i18n="discordHint">Ссылка на профиль Discord</div><div id="discord-err" class="form-error" style="display:none"></div></div>
+      <div class="form-group"><label class="form-label">Telegram</label><input class="form-input" id="contact-telegram" type="url" placeholder="https://t.me/username"><div class="contact-hint" data-i18n="telegramHint">Ссылка на профиль Telegram</div><div id="telegram-err" class="form-error" style="display:none"></div></div>
+      <div id="contact-req" class="contact-req" data-i18n="contactReq">Укажите хотя бы одну ссылку для связи</div>
       <label class="rules-check" for="rules-agree">
         <input type="checkbox" id="rules-agree">
-        <span class="rules-check-label">Я подтверждаю, что моё объявление не содержит <strong>ссылок на шокирующий / 18+ контент</strong>, скам-ссылок, спама и нарушений правил платформы.</span>
+        <span class="rules-check-label" data-i18n="rulesLabel">Я подтверждаю, что моё объявление не содержит <strong>ссылок на шокирующий / 18+ контент</strong>, скам-ссылок, спама и нарушений правил платформы.</span>
       </label>
-      <div id="rules-err" class="rules-err">Необходимо принять правила публикации</div>
+      <div id="rules-err" class="rules-err" data-i18n="rulesErr">Необходимо принять правила публикации</div>
     </div>
     <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeModal()">Отмена</button>
-      <button class="btn-submit" id="btn-submit-card" onclick="submitCard()">Опубликовать</button>
+      <button class="btn-secondary" onclick="closeModal()" data-i18n="cancel">Отмена</button>
+      <button class="btn-submit" id="btn-submit-card" onclick="submitCard()" data-i18n="publish">Опубликовать</button>
     </div>
   </div>
 </div>
-
+ 
 <!-- REPORT MODAL -->
 <div class="modal-overlay" id="report-overlay" onclick="closeReportOutside(event)">
   <div class="modal" style="max-width:420px">
     <div class="modal-header">
-      <div class="modal-title">Пожаловаться на объявление</div>
+      <div class="modal-title" data-i18n="reportTitle">Пожаловаться на объявление</div>
       <button class="modal-close" onclick="closeReportModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-body">
-      <p style="font-size:13px;color:var(--muted2);margin-bottom:.75rem">Выберите причину жалобы. Жалоба будет направлена администратору.</p>
-      <div class="report-reasons">
-        <label class="report-reason-opt" onclick="selectReason(0)"><input type="radio" name="rr"> Шокирующий / 18+ контент</label>
-        <label class="report-reason-opt" onclick="selectReason(1)"><input type="radio" name="rr"> Скам (мошенничество)</label>
-        <label class="report-reason-opt" onclick="selectReason(2)"><input type="radio" name="rr"> Спам / реклама</label>
-        <label class="report-reason-opt" onclick="selectReason(3)"><input type="radio" name="rr"> Оскорбления / хейт</label>
-        <label class="report-reason-opt" onclick="selectReason(4)"><input type="radio" name="rr"> Фейковые контакты</label>
-        <label class="report-reason-opt" onclick="selectReason(5)"><input type="radio" name="rr"> Другое</label>
+      <p style="font-size:13px;color:var(--muted2);margin-bottom:.75rem" data-i18n="reportHint">Выберите причину жалобы. Жалоба будет направлена администратору.</p>
+      <div class="report-reasons" id="report-reasons-list">
+        <label class="report-reason-opt" onclick="selectReason(0)"><input type="radio" name="rr"> <span data-i18n="r0">Шокирующий / 18+ контент</span></label>
+        <label class="report-reason-opt" onclick="selectReason(1)"><input type="radio" name="rr"> <span data-i18n="r1">Скам (мошенничество)</span></label>
+        <label class="report-reason-opt" onclick="selectReason(2)"><input type="radio" name="rr"> <span data-i18n="r2">Спам / реклама</span></label>
+        <label class="report-reason-opt" onclick="selectReason(3)"><input type="radio" name="rr"> <span data-i18n="r3">Оскорбления / хейт</span></label>
+        <label class="report-reason-opt" onclick="selectReason(4)"><input type="radio" name="rr"> <span data-i18n="r4">Фейковые контакты</span></label>
+        <label class="report-reason-opt" onclick="selectReason(5)"><input type="radio" name="rr"> <span data-i18n="r5">Неприемлемая аватарка</span></label>
+        <label class="report-reason-opt" onclick="selectReason(6)"><input type="radio" name="rr"> <span data-i18n="r6">Другое</span></label>
       </div>
-      <div class="form-group"><label class="form-label">Комментарий (необязательно)</label><textarea class="form-input" id="report-comment" rows="2" placeholder="Уточните причину..." style="resize:vertical"></textarea></div>
-      <div id="report-reason-err" class="form-error" style="display:none">Выберите причину</div>
+      <div class="form-group"><label class="form-label" data-i18n="commentOptional">Комментарий (необязательно)</label><textarea class="form-input" id="report-comment" rows="2" data-i18n-ph="specifyReason" placeholder="Уточните причину..." style="resize:vertical"></textarea></div>
+      <div id="report-reason-err" class="form-error" style="display:none" data-i18n="selectReason">Выберите причину</div>
     </div>
     <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeReportModal()">Отмена</button>
-      <button class="btn-submit" style="background:var(--warn)" onclick="submitReport()">Отправить жалобу</button>
+      <button class="btn-secondary" onclick="closeReportModal()" data-i18n="cancel">Отмена</button>
+      <button class="btn-submit" style="background:var(--warn)" onclick="submitReport()" data-i18n="sendReport">Отправить жалобу</button>
     </div>
   </div>
 </div>
-
+ 
+<!-- AVATAR UPLOAD MODAL -->
+<div class="modal-overlay" id="avatar-overlay" onclick="closeAvatarOutside(event)">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-header">
+      <div class="modal-title" data-i18n="changeAvatar">Сменить аватарку</div>
+      <button class="modal-close" onclick="closeAvatarModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="avatar-upload-area">
+        <div class="avatar-preview-circle" id="avatar-preview">?</div>
+        <label class="avatar-file-label">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span data-i18n="uploadPhoto">Загрузить фото</span>
+          <input type="file" class="avatar-file-input" id="avatar-file-input" accept="image/*" onchange="previewAvatar(event)">
+        </label>
+        <div class="avatar-hint" data-i18n="avatarHint">JPG, PNG или GIF · Макс. 512 КБ</div>
+        <button class="btn-remove-avatar" id="btn-remove-avatar" onclick="removeAvatar()" style="display:none" data-i18n="removeAvatar">Удалить аватарку</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeAvatarModal()" data-i18n="cancel">Отмена</button>
+      <button class="btn-submit" id="btn-save-avatar" onclick="saveAvatar()" data-i18n="save">Сохранить</button>
+    </div>
+  </div>
+</div>
+ 
 <!-- BAN MODAL -->
 <div class="modal-overlay" id="ban-overlay" onclick="closeBanOutside(event)">
   <div class="modal" style="max-width:400px">
     <div class="modal-header">
-      <div class="modal-title">Заблокировать пользователя</div>
+      <div class="modal-title" data-i18n="banUser">Заблокировать пользователя</div>
       <button class="modal-close" onclick="closeBanModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="modal-body">
-      <p style="font-size:14px;color:var(--muted2);margin-bottom:.25rem">Пользователь: <strong id="ban-target-name" style="color:var(--text)"></strong></p>
-      <div class="section-label">Срок блокировки</div>
+      <p style="font-size:14px;color:var(--muted2);margin-bottom:.25rem"><span data-i18n="userLabel">Пользователь:</span> <strong id="ban-target-name" style="color:var(--text)"></strong></p>
+      <div class="section-label" data-i18n="banDuration">Срок блокировки</div>
       <div class="ban-durations">
-        <div class="ban-dur-opt" data-dur="86400000" onclick="selectDur(this)">24 часа</div>
-        <div class="ban-dur-opt" data-dur="604800000" onclick="selectDur(this)">1 неделя</div>
-        <div class="ban-dur-opt" data-dur="2592000000" onclick="selectDur(this)">1 месяц</div>
-        <div class="ban-dur-opt" data-dur="31536000000" onclick="selectDur(this)">1 год</div>
-        <div class="ban-dur-opt" data-dur="0" onclick="selectDur(this)" style="grid-column:1/-1">Навсегда ♾️</div>
+        <div class="ban-dur-opt" data-dur="86400000" onclick="selectDur(this)" data-i18n="24h">24 часа</div>
+        <div class="ban-dur-opt" data-dur="604800000" onclick="selectDur(this)" data-i18n="1week">1 неделя</div>
+        <div class="ban-dur-opt" data-dur="2592000000" onclick="selectDur(this)" data-i18n="1month">1 месяц</div>
+        <div class="ban-dur-opt" data-dur="31536000000" onclick="selectDur(this)" data-i18n="1year">1 год</div>
+        <div class="ban-dur-opt" data-dur="0" onclick="selectDur(this)" style="grid-column:1/-1" data-i18n="forever">Навсегда ♾️</div>
       </div>
-      <div id="ban-dur-err" class="form-error" style="display:none">Выберите срок</div>
-      <div class="form-group" style="margin-top:.75rem"><label class="form-label">Причина блокировки</label><input class="form-input" id="ban-reason-input" type="text" placeholder="Например: нарушение правил — скам"></div>
+      <div id="ban-dur-err" class="form-error" style="display:none" data-i18n="selectDuration">Выберите срок</div>
+      <div class="form-group" style="margin-top:.75rem"><label class="form-label" data-i18n="banReason">Причина блокировки</label><input class="form-input" id="ban-reason-input" type="text" data-i18n-ph="banReasonPh" placeholder="Например: нарушение правил — скам"></div>
     </div>
     <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeBanModal()">Отмена</button>
-      <button class="btn-submit" style="background:var(--danger)" onclick="confirmBan()">Заблокировать</button>
+      <button class="btn-secondary" onclick="closeBanModal()" data-i18n="cancel">Отмена</button>
+      <button class="btn-submit" style="background:var(--danger)" onclick="confirmBan()" data-i18n="banBtn">Заблокировать</button>
     </div>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getDatabase, ref, set, get, push, update, remove, onValue, off }
+import { getDatabase, ref, set, get, push, update, remove, onValue }
   from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
-
+ 
 // ══════════════════════════════════════════════
-//  FIREBASE CONFIG
+//  FIREBASE CONFIG  —  Europe West region URL
 // ══════════════════════════════════════════════
 const firebaseConfig = {
   apiKey: "AIzaSyD4AcdlYSzxpzNk_fl9Bzlq9ogr6e-EI6s",
   authDomain: "teammate-now.firebaseapp.com",
-  // ▼ Realtime Database URL — стандартный формат для твоего проекта
-  databaseURL: "https://teammate-now-default-rtdb.firebaseio.com",
+  databaseURL: "https://teammate-now-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "teammate-now",
   storageBucket: "teammate-now.firebasestorage.app",
   messagingSenderId: "197247418377",
   appId: "1:197247418377:web:58d20c3117a9050ced78d8"
 };
-
+ 
 const app = initializeApp(firebaseConfig);
 const db  = getDatabase(app);
-
+ 
 // ══════════════════════════════════════════════
-//  ADMIN CREDENTIALS (SHA-256 only, no plaintext)
-//  Login:    TeammateNow_Admin
-//  Password: Qx7$mP2@nK9!vR
+//  I18N
+// ══════════════════════════════════════════════
+const LANGS = {
+  ru:{
+    login:'Войти',register:'Регистрация',authSubtitle:'Находи тиммейтов в онлайн-играх',
+    username:'Логин',password:'Пароль',confirmPassword:'Подтвердите пароль',
+    createAccount:'Создать аккаунт',enterLogin:'Введите логин',enterPassword:'Введите пароль',
+    createLogin:'Придумайте логин',minSix:'Минимум 6 символов',repeatPassword:'Повторите пароль',
+    findTeammate:'Найти тиммейта',admin:'Админ',allGames:'Все игры',
+    playersLooking:'Игроки ищут команду',loadingAds:'Загрузка объявлений...',
+    changeAvatar:'Сменить аватарку',logout:'Выйти',
+    back:'Назад',adminPanel:'Панель администратора',reports:'Жалобы',users:'Пользователи',
+    ads:'Объявления',adsCount:'Объявлений',status:'Статус',actions:'Действия',
+    author:'Автор',game:'Игра',mode:'Режим',rank:'Ранг',rating:'Рейтинг',
+    rankMmr:'Ранг / MMR',selectGame:'Выберите игру',selectMode:'Выберите режим',
+    selectRank:'Выберите ранг',selectModeFirst:'Сначала выберите режим',specifyRating:'Укажите рейтинг',
+    contacts:'Контакты',discordHint:'Ссылка на профиль Discord',telegramHint:'Ссылка на профиль Telegram',
+    contactReq:'Укажите хотя бы одну ссылку для связи',
+    rulesLabel:'Я подтверждаю, что моё объявление не содержит ссылок на шокирующий / 18+ контент, скам-ссылок, спама и нарушений правил платформы.',
+    rulesErr:'Необходимо принять правила публикации',cancel:'Отмена',publish:'Опубликовать',
+    save:'Сохранить',
+    reportTitle:'Пожаловаться на объявление',reportHint:'Выберите причину жалобы. Жалоба будет направлена администратору.',
+    r0:'Шокирующий / 18+ контент',r1:'Скам (мошенничество)',r2:'Спам / реклама',
+    r3:'Оскорбления / хейт',r4:'Фейковые контакты',r5:'Неприемлемая аватарка',r6:'Другое',
+    commentOptional:'Комментарий (необязательно)',specifyReason:'Уточните причину...',
+    selectReason:'Выберите причину',sendReport:'Отправить жалобу',
+    banUser:'Заблокировать пользователя',userLabel:'Пользователь:',banDuration:'Срок блокировки',
+    '24h':'24 часа','1week':'1 неделя','1month':'1 месяц','1year':'1 год',forever:'Навсегда ♾️',
+    selectDuration:'Выберите срок',banReason:'Причина блокировки',banReasonPh:'Например: нарушение правил — скам',
+    banBtn:'Заблокировать',
+    uploadPhoto:'Загрузить фото',avatarHint:'JPG, PNG или GIF · Макс. 512 КБ',
+    removeAvatar:'Удалить аватарку',
+    banTitle:'Аккаунт заблокирован',banAppeal:'Обжаловать бан в Discord',
+    banAppealHint:'Перейдите на сервер и создайте тикет в разделе #appeals',
+    madeBy:'Разработано',
+    noAds:'Объявлений пока нет',beFirst:'Будьте первым — нажмите «Найти тиммейта»',
+    editAd:'Редактировать объявление',adPublished:'Объявление опубликовано ✓',
+    adUpdated:'Объявление обновлено ✓',adDeleted:'Объявление удалено',
+    reportSent:'Жалоба отправлена администратору',reportErr:'Ошибка отправки жалобы',
+    netErr:'Ошибка. Проверьте интернет.',avatarSaved:'Аватарка обновлена ✓',
+    avatarRemoved:'Аватарка удалена',avatarTooBig:'Файл слишком большой. Макс. 512 КБ.',
+    banned:'Забанен',active:'Активен',forever2:'навсегда',until:'до',
+    regSince:'рег.',noUsers:'Нет пользователей',noReports:'Жалоб пока нет.',
+    noAdsAdmin:'Нет объявлений',dismiss:'Отклонить',reviewed:'Рассмотрено',
+    deleteAd:'Удалить объявление',deleteAdAdmin:'Удалить объявление (администратор)?',
+    deleteAdConfirm:'Удалить объявление',deleteAdsUser:'Удалить все объявления',
+    unbanned:'разбанен',blockedForever:' навсегда',blockedUntil:' до ',
+    unbanBtn:'✓ Разбанить',banFromReport:'🚫 Забанить',deleteFromReport:'🗑 Удалить объявление',
+    adAlreadyDeleted:'Объявление уже удалено',adsDeleted:'Объявления удалены',
+    deleteAdPrompt:'Удалить объявление @',deleteAdsPrompt:'Удалить все объявления @',
+    checking:'Проверяем...',creating:'Создаём...',publishing:'Публикуем...',saving:'Сохраняем...'
+  },
+  ua:{
+    login:'Увійти',register:'Реєстрація',authSubtitle:'Знаходь тіммейтів в онлайн-іграх',
+    username:'Логін',password:'Пароль',confirmPassword:'Підтвердіть пароль',
+    createAccount:'Створити акаунт',enterLogin:'Введіть логін',enterPassword:'Введіть пароль',
+    createLogin:'Придумайте логін',minSix:'Мінімум 6 символів',repeatPassword:'Повторіть пароль',
+    findTeammate:'Знайти тіммейта',admin:'Адмін',allGames:'Всі ігри',
+    playersLooking:'Гравці шукають команду',loadingAds:'Завантаження оголошень...',
+    changeAvatar:'Змінити аватарку',logout:'Вийти',
+    back:'Назад',adminPanel:'Панель адміністратора',reports:'Скарги',users:'Користувачі',
+    ads:'Оголошення',adsCount:'Оголошень',status:'Статус',actions:'Дії',
+    author:'Автор',game:'Гра',mode:'Режим',rank:'Ранг',rating:'Рейтинг',
+    rankMmr:'Ранг / MMR',selectGame:'Оберіть гру',selectMode:'Оберіть режим',
+    selectRank:'Оберіть ранг',selectModeFirst:'Спочатку оберіть режим',specifyRating:'Вкажіть рейтинг',
+    contacts:'Контакти',discordHint:'Посилання на профіль Discord',telegramHint:'Посилання на профіль Telegram',
+    contactReq:'Вкажіть хоча б одне посилання для зв\'язку',
+    rulesLabel:'Підтверджую, що моє оголошення не містить посилань на шокуючий / 18+ контент, скам-посилань, спаму та порушень правил платформи.',
+    rulesErr:'Необхідно прийняти правила публікації',cancel:'Скасувати',publish:'Опублікувати',
+    save:'Зберегти',
+    reportTitle:'Поскаржитися на оголошення',reportHint:'Оберіть причину скарги. Скаргу буде направлено адміністратору.',
+    r0:'Шокуючий / 18+ контент',r1:'Скам (шахрайство)',r2:'Спам / реклама',
+    r3:'Образи / хейт',r4:'Фейкові контакти',r5:'Неприйнятний аватар',r6:'Інше',
+    commentOptional:'Коментар (необов\'язково)',specifyReason:'Уточніть причину...',
+    selectReason:'Оберіть причину',sendReport:'Надіслати скаргу',
+    banUser:'Заблокувати користувача',userLabel:'Користувач:',banDuration:'Термін блокування',
+    '24h':'24 години','1week':'1 тиждень','1month':'1 місяць','1year':'1 рік',forever:'Назавжди ♾️',
+    selectDuration:'Оберіть термін',banReason:'Причина блокування',banReasonPh:'Наприклад: порушення правил — скам',
+    banBtn:'Заблокувати',
+    uploadPhoto:'Завантажити фото',avatarHint:'JPG, PNG або GIF · Макс. 512 КБ',
+    removeAvatar:'Видалити аватарку',
+    banTitle:'Акаунт заблокований',banAppeal:'Оскаржити бан у Discord',
+    banAppealHint:'Перейдіть на сервер та створіть тікет у розділі #appeals',
+    madeBy:'Розроблено',
+    noAds:'Оголошень поки немає',beFirst:'Будьте першим — натисніть «Знайти тіммейта»',
+    editAd:'Редагувати оголошення',adPublished:'Оголошення опубліковано ✓',
+    adUpdated:'Оголошення оновлено ✓',adDeleted:'Оголошення видалено',
+    reportSent:'Скаргу надіслано адміністратору',reportErr:'Помилка надсилання скарги',
+    netErr:'Помилка. Перевірте інтернет.',avatarSaved:'Аватарку оновлено ✓',
+    avatarRemoved:'Аватарку видалено',avatarTooBig:'Файл надто великий. Макс. 512 КБ.',
+    banned:'Забанений',active:'Активний',forever2:'назавжди',until:'до',
+    regSince:'рег.',noUsers:'Немає користувачів',noReports:'Скарг поки немає.',
+    noAdsAdmin:'Немає оголошень',dismiss:'Відхилити',reviewed:'Розглянуто',
+    deleteAd:'Видалити оголошення',deleteAdAdmin:'Видалити оголошення (адміністратор)?',
+    deleteAdConfirm:'Видалити оголошення',deleteAdsUser:'Видалити всі оголошення',
+    unbanned:'розбанений',blockedForever:' назавжди',blockedUntil:' до ',
+    unbanBtn:'✓ Розбанити',banFromReport:'🚫 Забанити',deleteFromReport:'🗑 Видалити оголошення',
+    adAlreadyDeleted:'Оголошення вже видалено',adsDeleted:'Оголошення видалено',
+    deleteAdPrompt:'Видалити оголошення @',deleteAdsPrompt:'Видалити всі оголошення @',
+    checking:'Перевіряємо...',creating:'Створюємо...',publishing:'Публікуємо...',saving:'Зберігаємо...'
+  },
+  en:{
+    login:'Log In',register:'Sign Up',authSubtitle:'Find teammates for online games',
+    username:'Username',password:'Password',confirmPassword:'Confirm password',
+    createAccount:'Create account',enterLogin:'Enter username',enterPassword:'Enter password',
+    createLogin:'Choose username',minSix:'At least 6 characters',repeatPassword:'Repeat password',
+    findTeammate:'Find Teammate',admin:'Admin',allGames:'All Games',
+    playersLooking:'Players looking for a team',loadingAds:'Loading listings...',
+    changeAvatar:'Change Avatar',logout:'Log Out',
+    back:'Back',adminPanel:'Admin Panel',reports:'Reports',users:'Users',
+    ads:'Listings',adsCount:'Listings',status:'Status',actions:'Actions',
+    author:'Author',game:'Game',mode:'Mode',rank:'Rank',rating:'Rating',
+    rankMmr:'Rank / MMR',selectGame:'Choose a game',selectMode:'Choose mode',
+    selectRank:'Choose rank',selectModeFirst:'Choose mode first',specifyRating:'Specify rating',
+    contacts:'Contacts',discordHint:'Link to Discord profile',telegramHint:'Link to Telegram profile',
+    contactReq:'Provide at least one contact link',
+    rulesLabel:'I confirm my listing contains no shocking / 18+ content, scam links, spam or platform violations.',
+    rulesErr:'You must accept the publishing rules',cancel:'Cancel',publish:'Publish',
+    save:'Save',
+    reportTitle:'Report Listing',reportHint:'Choose a reason. The report will be sent to an admin.',
+    r0:'Shocking / 18+ content',r1:'Scam / fraud',r2:'Spam / advertising',
+    r3:'Insults / hate',r4:'Fake contacts',r5:'Inappropriate avatar',r6:'Other',
+    commentOptional:'Comment (optional)',specifyReason:'Describe the issue...',
+    selectReason:'Choose a reason',sendReport:'Send Report',
+    banUser:'Ban User',userLabel:'User:',banDuration:'Ban Duration',
+    '24h':'24 hours','1week':'1 week','1month':'1 month','1year':'1 year',forever:'Forever ♾️',
+    selectDuration:'Choose duration',banReason:'Ban reason',banReasonPh:'e.g. rule violation — scam',
+    banBtn:'Ban',
+    uploadPhoto:'Upload photo',avatarHint:'JPG, PNG or GIF · Max 512 KB',
+    removeAvatar:'Remove avatar',
+    banTitle:'Account Banned',banAppeal:'Appeal ban on Discord',
+    banAppealHint:'Join the server and create a ticket in #appeals',
+    madeBy:'Made by',
+    noAds:'No listings yet',beFirst:'Be first — click "Find Teammate"',
+    editAd:'Edit listing',adPublished:'Listing published ✓',
+    adUpdated:'Listing updated ✓',adDeleted:'Listing deleted',
+    reportSent:'Report sent to admin',reportErr:'Error sending report',
+    netErr:'Error. Check your connection.',avatarSaved:'Avatar updated ✓',
+    avatarRemoved:'Avatar removed',avatarTooBig:'File too large. Max 512 KB.',
+    banned:'Banned',active:'Active',forever2:'forever',until:'until',
+    regSince:'reg.',noUsers:'No users',noReports:'No reports yet.',
+    noAdsAdmin:'No listings',dismiss:'Dismiss',reviewed:'Reviewed',
+    deleteAd:'Delete listing',deleteAdAdmin:'Delete listing (admin)?',
+    deleteAdConfirm:'Delete listing',deleteAdsUser:'Delete all listings',
+    unbanned:'unbanned',blockedForever:' forever',blockedUntil:' until ',
+    unbanBtn:'✓ Unban',banFromReport:'🚫 Ban',deleteFromReport:'🗑 Delete listing',
+    adAlreadyDeleted:'Listing already deleted',adsDeleted:'Listings deleted',
+    deleteAdPrompt:'Delete listing by @',deleteAdsPrompt:'Delete all listings by @',
+    checking:'Checking...',creating:'Creating...',publishing:'Publishing...',saving:'Saving...'
+  }
+};
+ 
+let currentLang = localStorage.getItem('tn_lang') || 'ru';
+ 
+function t(key){ return (LANGS[currentLang]||LANGS.ru)[key] || (LANGS.ru[key] || key); }
+ 
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (el.tagName==='INPUT'||el.tagName==='BUTTON'||el.tagName==='TEXTAREA') el.value=val; // not desired for inputs
+    else el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-ph'));
+  });
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase()===currentLang);
+  });
+  // rules-check label needs innerHTML with strong
+  const rl = document.querySelector('.rules-check-label');
+  if (rl) {
+    if (currentLang==='ru') rl.innerHTML = 'Я подтверждаю, что моё объявление не содержит <strong>ссылок на шокирующий / 18+ контент</strong>, скам-ссылок, спама и нарушений правил платформы.';
+    else if (currentLang==='ua') rl.innerHTML = 'Підтверджую, що моє оголошення не містить <strong>посилань на шокуючий / 18+ контент</strong>, скам-посилань, спаму та порушень правил платформи.';
+    else rl.innerHTML = 'I confirm my listing contains no <strong>shocking / 18+ content</strong>, scam links, spam or platform violations.';
+  }
+}
+ 
+window.setLang = function(lang, e) {
+  if (e) e.stopPropagation();
+  currentLang = lang;
+  localStorage.setItem('tn_lang', lang);
+  applyLang();
+  renderCards();
+};
+ 
+// ══════════════════════════════════════════════
+//  ADMIN CREDENTIALS
 // ══════════════════════════════════════════════
 const ADMIN_LOGIN_HASH = '25c83b6d2384ee441fc9d22b542f1c0f92f729cbbe28cf354e5ac68af91614aa';
 const ADMIN_PASS_HASH  = 'aaee6faffe05f4fa44ba8ce28cc3aec3ca21aef6086e8d225587dc4ef270fefe';
 const ADMIN_SESSION_KEY = '__tn_adm__';
 const SESSION_KEY = 'tn_session';
-
+ 
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
-
+ 
 // ══════════════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════════════
 const state = {
-  currentUser: null,
-  isAdmin: false,
-  filterGame: 'all',
-  selectedGame: null,
-  editingId: null,
-  reportingCardId: null,
-  banTargetUser: null,
-  banDuration: null,
-  // live data (filled by Firebase listeners)
-  cards: {},
-  users: {},
-  bans: {},
-  reports: {},
-  // listener references for cleanup
-  _cardsListener: null
+  currentUser:null, isAdmin:false, filterGame:'all', selectedGame:null,
+  editingId:null, reportingCardId:null, banTargetUser:null, banDuration:null,
+  avatarPendingB64:null,
+  cards:{}, users:{}, bans:{}, reports:{}, avatars:{},
+  _cardsListener:null
 };
-
+ 
 // ══════════════════════════════════════════════
 //  DB HELPERS
 // ══════════════════════════════════════════════
 const dbRef = path => ref(db, path);
-
-async function dbGet(path) {
-  const snap = await get(dbRef(path));
-  return snap.exists() ? snap.val() : null;
-}
-async function dbSet(path, val)    { await set(dbRef(path), val); }
-async function dbUpdate(path, val) { await update(dbRef(path), val); }
-async function dbRemove(path)      { await remove(dbRef(path)); }
-async function dbPush(path, val)   {
-  const r = push(dbRef(path), val);
-  return r.key;
-}
-
+async function dbGet(path){ const s=await get(dbRef(path)); return s.exists()?s.val():null; }
+async function dbSet(path,val){ await set(dbRef(path),val); }
+async function dbUpdate(path,val){ await update(dbRef(path),val); }
+async function dbRemove(path){ await remove(dbRef(path)); }
+async function dbPush(path,val){ const r=push(dbRef(path),val); return r.key; }
+ 
 // ══════════════════════════════════════════════
 //  BAN HELPERS
 // ══════════════════════════════════════════════
-function getBanStatus(ban) {
-  if (!ban) return null;
-  if (ban.permanent) return ban;
-  if (Date.now() < ban.until) return ban;
-  return null;
-}
-function formatRemaining(ms) {
-  if (ms<=0) return '0 сек';
+function getBanStatus(ban){ if(!ban)return null; if(ban.permanent)return ban; if(Date.now()<ban.until)return ban; return null; }
+function formatRemaining(ms){
+  if(ms<=0)return '0 '+((currentLang==='en')?'sec':'сек');
   const s=Math.floor(ms/1000),m=Math.floor(s/60),h=Math.floor(m/60),d=Math.floor(h/24);
-  if (d>0) return `${d} д ${h%24} ч`;
-  if (h>0) return `${h} ч ${m%60} мин`;
-  if (m>0) return `${m} мин`;
-  return `${s} сек`;
+  if(currentLang==='en'){
+    if(d>0)return `${d}d ${h%24}h`;if(h>0)return `${h}h ${m%60}m`;if(m>0)return `${m}m`;return `${s}s`;
+  }else if(currentLang==='ua'){
+    if(d>0)return `${d} д ${h%24} г`;if(h>0)return `${h} г ${m%60} хв`;if(m>0)return `${m} хв`;return `${s} с`;
+  }
+  if(d>0)return `${d} д ${h%24} ч`;if(h>0)return `${h} ч ${m%60} мин`;if(m>0)return `${m} мин`;return `${s} сек`;
 }
-
+ 
 // ══════════════════════════════════════════════
-//  INIT — run on page load
+//  INIT
 // ══════════════════════════════════════════════
 async function init() {
-  // Start live cards listener immediately so feed updates in real-time
+  applyLang();
   startCardsListener();
-
   const session = localStorage.getItem(SESSION_KEY);
   if (session) {
     if (session === ADMIN_SESSION_KEY) {
       await loginAs(ADMIN_SESSION_KEY, true);
     } else {
-      // Verify user still exists in DB
       const u = await dbGet(`users/${session}`);
-      if (u) {
-        await loginAs(session, false);
-      } else {
-        localStorage.removeItem(SESSION_KEY);
-        showAuth();
-      }
+      if (u) { await loginAs(session, false); }
+      else { localStorage.removeItem(SESSION_KEY); showAuth(); }
     }
-  } else {
-    showAuth();
-  }
+  } else { showAuth(); }
 }
-
+ 
 function showAuth() {
-  document.getElementById('global-loader').style.display = 'none';
-  document.getElementById('auth-screen').style.display = 'flex';
+  document.getElementById('global-loader').style.display='none';
+  document.getElementById('auth-screen').style.display='flex';
+  applyLang();
 }
-
+ 
 // ══════════════════════════════════════════════
 //  LIVE CARDS LISTENER
 // ══════════════════════════════════════════════
 function startCardsListener() {
   if (state._cardsListener) return;
-  const cardsRef = dbRef('cards');
-  state._cardsListener = onValue(cardsRef, snap => {
+  const cRef = dbRef('cards');
+  state._cardsListener = onValue(cRef, snap => {
     state.cards = snap.exists() ? snap.val() : {};
     if (state.currentUser || state.isAdmin) renderCards();
   });
 }
-
+ 
 // ══════════════════════════════════════════════
 //  AUTH
 // ══════════════════════════════════════════════
 window.switchTab = function(tab) {
   document.querySelectorAll('.auth-tab').forEach((t,i)=>t.classList.toggle('active',i===(tab==='login'?0:1)));
-  document.getElementById('login-form').style.display    = tab==='login'    ? '' : 'none';
-  document.getElementById('register-form').style.display = tab==='register' ? '' : 'none';
-  document.getElementById('auth-error').style.display = 'none';
+  document.getElementById('login-form').style.display    = tab==='login'?'':'none';
+  document.getElementById('register-form').style.display = tab==='register'?'':'none';
+  document.getElementById('auth-error').style.display='none';
+  applyLang();
 };
-
-function showAuthError(msg) {
-  const el = document.getElementById('auth-error');
-  el.textContent = msg; el.style.display = 'block';
-}
-
+ 
+function showAuthError(msg){ const el=document.getElementById('auth-error'); el.textContent=msg; el.style.display='block'; }
+ 
 window.doLogin = async function() {
-  const u = document.getElementById('login-username').value.trim();
-  const p = document.getElementById('login-password').value;
-  if (!u||!p) return showAuthError('Заполните все поля');
-
-  const btn = document.getElementById('btn-login');
-  btn.disabled = true; btn.textContent = 'Проверяем...';
-
+  const u=document.getElementById('login-username').value.trim();
+  const p=document.getElementById('login-password').value;
+  if(!u||!p)return showAuthError(t('enterLogin').replace('Введіть','Заповніть').replace('Enter','Fill in'));
+  const btn=document.getElementById('btn-login');
+  btn.disabled=true; btn.textContent=t('checking');
   try {
-    const uHash = await sha256(u);
-    const pHash = await sha256(p);
-
-    // Admin check
-    if (uHash === ADMIN_LOGIN_HASH && pHash === ADMIN_PASS_HASH) {
-      localStorage.setItem(SESSION_KEY, ADMIN_SESSION_KEY);
-      await loginAs(ADMIN_SESSION_KEY, true);
-      return;
-    }
-
-    // Regular user
-    const userData = await dbGet(`users/${u}`);
-    if (!userData) { showAuthError('Пользователь не найден'); return; }
-    if (userData.password !== p) { showAuthError('Неверный пароль'); return; }
-
-    localStorage.setItem(SESSION_KEY, u);
-    await loginAs(u, false);
-  } catch(e) {
-    showAuthError('Ошибка соединения. Проверьте интернет.');
-    console.error(e);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Войти';
-  }
+    const uH=await sha256(u), pH=await sha256(p);
+    if(uH===ADMIN_LOGIN_HASH&&pH===ADMIN_PASS_HASH){ localStorage.setItem(SESSION_KEY,ADMIN_SESSION_KEY); await loginAs(ADMIN_SESSION_KEY,true); return; }
+    const ud=await dbGet(`users/${u}`);
+    if(!ud){showAuthError(currentLang==='en'?'User not found':currentLang==='ua'?'Користувача не знайдено':'Пользователь не найден');return;}
+    if(ud.password!==p){showAuthError(currentLang==='en'?'Wrong password':currentLang==='ua'?'Невірний пароль':'Неверный пароль');return;}
+    localStorage.setItem(SESSION_KEY,u); await loginAs(u,false);
+  } catch(e){ showAuthError(currentLang==='en'?'Connection error.':currentLang==='ua'?'Помилка з\'єднання.':'Ошибка соединения.'); console.error(e); }
+  finally { btn.disabled=false; btn.textContent=t('login'); }
 };
-
+ 
 window.doRegister = async function() {
-  const u  = document.getElementById('reg-username').value.trim();
-  const p  = document.getElementById('reg-password').value;
-  const p2 = document.getElementById('reg-password2').value;
-  if (!u||!p||!p2) return showAuthError('Заполните все поля');
-  if (u.length < 3)  return showAuthError('Логин минимум 3 символа');
-  if (p.length < 6)  return showAuthError('Пароль минимум 6 символов');
-  if (p !== p2)       return showAuthError('Пароли не совпадают');
-  // Reject reserved characters for Firebase path safety
-  if (/[.#$\[\]/]/.test(u)) return showAuthError('Логин содержит недопустимые символы');
-
-  const btn = document.getElementById('btn-register');
-  btn.disabled = true; btn.textContent = 'Создаём...';
-
+  const u=document.getElementById('reg-username').value.trim();
+  const p=document.getElementById('reg-password').value;
+  const p2=document.getElementById('reg-password2').value;
+  if(!u||!p||!p2)return showAuthError(currentLang==='en'?'Fill in all fields':currentLang==='ua'?'Заповніть всі поля':'Заполните все поля');
+  if(u.length<3)return showAuthError(currentLang==='en'?'Username min 3 chars':currentLang==='ua'?'Логін мінімум 3 символи':'Логин минимум 3 символа');
+  if(p.length<6)return showAuthError(t('minSix'));
+  if(p!==p2)return showAuthError(currentLang==='en'?'Passwords do not match':currentLang==='ua'?'Паролі не збігаються':'Пароли не совпадают');
+  if(/[.#$\[\]/]/.test(u))return showAuthError(currentLang==='en'?'Invalid characters in username':currentLang==='ua'?'Логін містить недопустимі символи':'Логин содержит недопустимые символы');
+  const btn=document.getElementById('btn-register');
+  btn.disabled=true; btn.textContent=t('creating');
   try {
-    const uHash = await sha256(u);
-    if (uHash === ADMIN_LOGIN_HASH) { showAuthError('Этот логин зарезервирован'); return; }
-
-    const existing = await dbGet(`users/${u}`);
-    if (existing) { showAuthError('Такой логин уже занят'); return; }
-
-    await dbSet(`users/${u}`, { password: p, createdAt: Date.now() });
-    localStorage.setItem(SESSION_KEY, u);
-    await loginAs(u, false);
-  } catch(e) {
-    showAuthError('Ошибка соединения. Проверьте интернет.');
-    console.error(e);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Создать аккаунт';
-  }
+    const uH=await sha256(u);
+    if(uH===ADMIN_LOGIN_HASH){showAuthError(currentLang==='en'?'Username reserved':currentLang==='ua'?'Цей логін зарезервовано':'Этот логин зарезервирован');return;}
+    const ex=await dbGet(`users/${u}`);
+    if(ex){showAuthError(currentLang==='en'?'Username taken':currentLang==='ua'?'Такий логін вже зайнятий':'Такой логин уже занят');return;}
+    await dbSet(`users/${u}`,{password:p,createdAt:Date.now()});
+    localStorage.setItem(SESSION_KEY,u); await loginAs(u,false);
+  } catch(e){ showAuthError(currentLang==='en'?'Connection error.':currentLang==='ua'?'Помилка з\'єднання.':'Ошибка соединения.'); console.error(e); }
+  finally { btn.disabled=false; btn.textContent=t('createAccount'); }
 };
-
+ 
 async function loginAs(username, isAdmin) {
   if (!isAdmin) {
-    // Check ban
-    const banData = await dbGet(`bans/${username}`);
-    const ban = getBanStatus(banData);
-    if (ban) {
-      document.getElementById('global-loader').style.display = 'none';
-      document.getElementById('auth-screen').style.display   = 'none';
-      document.getElementById('ban-screen').style.display    = 'flex';
-      document.getElementById('ban-reason-text').textContent =
-        ban.reason ? `Причина: ${ban.reason}` : 'Ваш аккаунт заблокирован администратором.';
-      const tb = document.getElementById('ban-timer-block');
-      if (ban.permanent) {
-        tb.innerHTML = 'Блокировка: <span>Навсегда</span>';
-      } else {
-        const updateTimer = () => {
-          const r = ban.until - Date.now();
-          if (r<=0) { tb.innerHTML='Разблокировка скоро...'; return; }
-          tb.innerHTML = `До разблокировки: <span>${formatRemaining(r)}</span>`;
-          setTimeout(updateTimer, 1000);
-        };
-        updateTimer();
+    const banData=await dbGet(`bans/${username}`);
+    const ban=getBanStatus(banData);
+    if(ban){
+      document.getElementById('global-loader').style.display='none';
+      document.getElementById('auth-screen').style.display='none';
+      document.getElementById('ban-screen').style.display='flex';
+      document.getElementById('ban-reason-text').textContent=ban.reason?(
+        (currentLang==='en'?'Reason: ':currentLang==='ua'?'Причина: ':'Причина: ')+ban.reason
+      ):(currentLang==='en'?'Your account has been banned.':currentLang==='ua'?'Ваш акаунт заблоковано адміністратором.':'Ваш аккаунт заблокирован администратором.');
+      const tb=document.getElementById('ban-timer-block');
+      const foreverLabel=currentLang==='en'?'Forever':currentLang==='ua'?'Назавжди':'Навсегда';
+      const unlockLabel=currentLang==='en'?'Unlocking soon...':currentLang==='ua'?'Розблокування скоро...':'Разблокировка скоро...';
+      const untilLabel=currentLang==='en'?'Time remaining: ':currentLang==='ua'?'До розблокування: ':'До разблокировки: ';
+      const banLabel=currentLang==='en'?'Ban: ':currentLang==='ua'?'Блокування: ':'Блокировка: ';
+      if(ban.permanent){tb.innerHTML=`${banLabel}<span>${foreverLabel}</span>`;}
+      else{
+        const upd=()=>{const r=ban.until-Date.now();if(r<=0){tb.innerHTML=unlockLabel;return;}tb.innerHTML=`${untilLabel}<span>${formatRemaining(r)}</span>`;setTimeout(upd,1000);};upd();
       }
+      applyLang();
       return;
     }
   }
-
-  state.currentUser = username;
-  state.isAdmin = isAdmin;
-
-  document.getElementById('global-loader').style.display = 'none';
-  document.getElementById('auth-screen').style.display   = 'none';
-  document.getElementById('ban-screen').style.display    = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  const displayName = isAdmin ? '★ Admin' : username;
-  document.getElementById('avatar-btn').textContent = displayName[0].toUpperCase();
-  document.getElementById('menu-username').textContent = displayName;
-
-  if (isAdmin) {
-    const btn = document.getElementById('admin-btn');
-    btn.style.display = 'flex';
-    updateAdminBadge();
-  }
-
+  state.currentUser=username; state.isAdmin=isAdmin;
+  document.getElementById('global-loader').style.display='none';
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('ban-screen').style.display='none';
+  document.getElementById('app').style.display='flex';
+ 
+  const displayName=isAdmin?'★ Admin':username;
+  document.getElementById('menu-username').textContent=displayName;
+ 
+  // Load avatar
+  const av=await dbGet(`avatars/${username}`);
+  updateAvatarBtn(av||null, displayName);
+ 
+  if(isAdmin){document.getElementById('admin-btn').style.display='flex';updateAdminBadge();}
+  applyLang();
   renderCards();
 }
-
-window.doLogout = function() {
+ 
+function updateAvatarBtn(b64, displayName) {
+  const btn=document.getElementById('avatar-btn');
+  if(b64){btn.innerHTML=`<img src="${b64}" alt="av">`;}
+  else{btn.innerHTML=displayName?displayName[0].toUpperCase():'?';}
+}
+ 
+window.doLogout=function(){
   localStorage.removeItem(SESSION_KEY);
-  state.currentUser = null; state.isAdmin = false;
-  document.getElementById('app').style.display         = 'none';
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('auth-screen').style.display = 'flex';
+  state.currentUser=null;state.isAdmin=false;
+  document.getElementById('app').style.display='none';
+  document.getElementById('admin-panel').style.display='none';
+  document.getElementById('auth-screen').style.display='flex';
   document.getElementById('avatar-menu').classList.remove('open');
-  document.getElementById('login-username').value = '';
-  document.getElementById('login-password').value = '';
+  document.getElementById('login-username').value='';
+  document.getElementById('login-password').value='';
+  document.getElementById('avatar-btn').innerHTML='?';
   switchTab('login');
 };
-
-window.toggleMenu = function() { document.getElementById('avatar-menu').classList.toggle('open'); };
-document.addEventListener('click', e => {
-  if (!e.target.closest('#avatar-btn') && !e.target.closest('#avatar-menu'))
+ 
+window.toggleMenu=function(){document.getElementById('avatar-menu').classList.toggle('open');};
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#avatar-btn')&&!e.target.closest('#avatar-menu'))
     document.getElementById('avatar-menu').classList.remove('open');
 });
-
+ 
+// ══════════════════════════════════════════════
+//  AVATAR MODAL
+// ══════════════════════════════════════════════
+window.openAvatarModal=async function(){
+  document.getElementById('avatar-menu').classList.remove('open');
+  state.avatarPendingB64=null;
+  const prev=document.getElementById('avatar-preview');
+  const removeBtn=document.getElementById('btn-remove-avatar');
+  const existing=await dbGet(`avatars/${state.currentUser}`);
+  if(existing){prev.innerHTML=`<img src="${existing}" alt="">`;removeBtn.style.display='';}
+  else{prev.innerHTML=state.currentUser[0].toUpperCase();removeBtn.style.display='none';}
+  document.getElementById('avatar-file-input').value='';
+  document.getElementById('avatar-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+};
+window.closeAvatarModal=function(){document.getElementById('avatar-overlay').classList.remove('open');document.body.style.overflow='';};
+window.closeAvatarOutside=function(e){if(e.target.id==='avatar-overlay')closeAvatarModal();};
+ 
+window.previewAvatar=function(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  if(file.size>512*1024){showToast(t('avatarTooBig'),'error');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    state.avatarPendingB64=e.target.result;
+    const prev=document.getElementById('avatar-preview');
+    prev.innerHTML=`<img src="${state.avatarPendingB64}" alt="">`;
+    document.getElementById('btn-remove-avatar').style.display='';
+  };
+  reader.readAsDataURL(file);
+};
+ 
+window.saveAvatar=async function(){
+  const btn=document.getElementById('btn-save-avatar');
+  btn.disabled=true; btn.textContent=t('saving');
+  try{
+    if(state.avatarPendingB64){
+      await dbSet(`avatars/${state.currentUser}`,state.avatarPendingB64);
+      updateAvatarBtn(state.avatarPendingB64,state.currentUser);
+      showToast(t('avatarSaved'),'success');
+    }else{showToast(t('avatarSaved'),'success');}
+    closeAvatarModal();
+    renderCards();
+  }catch(e){showToast(t('netErr'),'error');console.error(e);}
+  finally{btn.disabled=false;btn.textContent=t('save');}
+};
+ 
+window.removeAvatar=async function(){
+  await dbRemove(`avatars/${state.currentUser}`);
+  state.avatarPendingB64=null;
+  const prev=document.getElementById('avatar-preview');
+  prev.innerHTML=state.currentUser[0].toUpperCase();
+  document.getElementById('btn-remove-avatar').style.display='none';
+  updateAvatarBtn(null,state.currentUser);
+  showToast(t('avatarRemoved'),'success');
+  renderCards();
+};
+ 
 // ══════════════════════════════════════════════
 //  FILTERS
 // ══════════════════════════════════════════════
-window.setFilter = function(game, el) {
-  state.filterGame = game;
+window.setFilter=function(game,el){
+  state.filterGame=game;
   document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   renderCards();
 };
-
+ 
 // ══════════════════════════════════════════════
-//  RENDER CARDS (uses live state.cards)
+//  RENDER CARDS
 // ══════════════════════════════════════════════
-const GAME_META = {
-  'CS2':         {emoji:'🎯',color:'#FF6B35'},
-  'Dota 2':      {emoji:'🗡️',color:'#C8392B'},
-  'Brawl Stars': {emoji:'⭐',color:'#FFB800'},
-  'Minecraft':   {emoji:'⛏️',color:'#5D9A33'},
-  'Roblox':      {emoji:'🟥',color:'#E03030'},
-  'Rust':        {emoji:'🔧',color:'#CD6633'},
-  'GTA 5 RP':    {emoji:'🌆',color:'#3474D4'}
+const GAME_META={
+  'CS2':{emoji:'🎯',color:'#FF6B35'},'Dota 2':{emoji:'🗡️',color:'#C8392B'},
+  'Brawl Stars':{emoji:'⭐',color:'#FFB800'},'Minecraft':{emoji:'⛏️',color:'#5D9A33'},
+  'Roblox':{emoji:'🟥',color:'#E03030'},'Rust':{emoji:'🔧',color:'#CD6633'},
+  'GTA 5 RP':{emoji:'🌆',color:'#3474D4'}
 };
-
-function renderCards() {
-  const grid = document.getElementById('cards-grid');
-  if (!grid) return;
-
-  let cards = Object.entries(state.cards)
-    .map(([id, c]) => ({...c, id}))
-    .sort((a,b) => b.createdAt - a.createdAt);
-
-  if (state.filterGame !== 'all') cards = cards.filter(c => c.game === state.filterGame);
-
-  if (cards.length === 0) {
-    grid.innerHTML = `<div class="empty-state">
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="32" cy="32" r="28"/><path d="M20 32h24M32 20v24"/></svg>
-      <h3>Объявлений пока нет</h3><p>Будьте первым — нажмите «Найти тиммейта»</p>
-    </div>`;
+ 
+async function renderCards() {
+  const grid=document.getElementById('cards-grid');
+  if(!grid)return;
+  let cards=Object.entries(state.cards).map(([id,c])=>({...c,id})).sort((a,b)=>b.createdAt-a.createdAt);
+  if(state.filterGame!=='all')cards=cards.filter(c=>c.game===state.filterGame);
+  if(!cards.length){
+    grid.innerHTML=`<div class="empty-state"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="32" cy="32" r="28"/><path d="M20 32h24M32 20v24"/></svg><h3>${t('noAds')}</h3><p>${t('beFirst')}</p></div>`;
     return;
   }
-
-  grid.innerHTML = cards.map(c => {
-    const meta = GAME_META[c.game] || {emoji:'🎮',color:'#7C3AED'};
-    const isOwner = c.owner === state.currentUser;
-
-    let ownerActions = '';
-    if (isOwner) {
-      ownerActions = `<div class="card-owner-actions">
-        <div class="card-icon-btn" onclick="editCard('${c.id}')" title="Редактировать"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <div class="card-icon-btn del" onclick="deleteCard('${c.id}')" title="Удалить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+  // Load avatars for card owners
+  const owners=[...new Set(cards.map(c=>c.owner))];
+  const avatarPromises=owners.map(async o=>({[o]:await dbGet(`avatars/${o}`)}));
+  const avatarResults=await Promise.all(avatarPromises);
+  const avatarMap=Object.assign({},...avatarResults);
+ 
+  grid.innerHTML=cards.map(c=>{
+    const meta=GAME_META[c.game]||{emoji:'🎮',color:'#7C3AED'};
+    const isOwner=c.owner===state.currentUser;
+    const av=avatarMap[c.owner];
+    const authorAvatarHtml=av
+      ?`<div class="author-avatar"><img src="${av}" alt=""></div>`
+      :`<div class="author-avatar">${c.owner[0].toUpperCase()}</div>`;
+    let ownerActions='';
+    if(isOwner){
+      ownerActions=`<div class="card-owner-actions">
+        <div class="card-icon-btn" onclick="editCard('${c.id}')" title="${t('editAd')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="card-icon-btn del" onclick="deleteCard('${c.id}')" title="${t('deleteAd')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
       </div>`;
-    } else if (state.isAdmin) {
-      ownerActions = `<div class="card-owner-actions">
-        <div class="card-icon-btn del" onclick="adminDeleteCardById('${c.id}')" title="Удалить (Админ)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
-      </div>`;
+    }else if(state.isAdmin){
+      ownerActions=`<div class="card-owner-actions"><div class="card-icon-btn del" onclick="adminDeleteCardById('${c.id}')" title="${t('deleteAd')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div></div>`;
     }
-
-    const discordLink  = c.discord  ? `<a class="contact-link discord"  href="${esc(c.discord)}"  target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.053a19.87 19.87 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.62.874-1.275 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>Discord</a>` : '';
-    const telegramLink = c.telegram ? `<a class="contact-link telegram" href="${esc(c.telegram)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>` : '';
-    const reportBtn = (!isOwner && !state.isAdmin) ? `<div class="card-icon-btn report-btn" onclick="openReportModal('${c.id}')" title="Пожаловаться"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>` : '';
-
+    const discordLink=c.discord?`<a class="contact-link discord" href="${esc(c.discord)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.04.033.053a19.87 19.87 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.62.874-1.275 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>Discord</a>`:'';
+    const telegramLink=c.telegram?`<a class="contact-link telegram" href="${esc(c.telegram)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>`:'';
+    const reportBtn=(!isOwner&&!state.isAdmin)?`<div class="card-icon-btn report-btn" onclick="openReportModal('${c.id}')" title="${t('reportTitle')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>`:'';
     return `<div class="player-card" style="--game-color:${meta.color}">
       <div class="card-header">
         <div class="game-badge">
@@ -831,188 +1100,138 @@ function renderCards() {
       </div>
       <div class="rank-block">
         <div class="rank-icon">🏅</div>
-        <div><div class="rank-label">Ранг / Рейтинг</div><div class="rank-value">${esc(c.rank)}</div></div>
+        <div><div class="rank-label">${t('rankMmr')}</div><div class="rank-value">${esc(c.rank)}</div></div>
       </div>
       <div class="card-contacts">${discordLink}${telegramLink}</div>
-      <div class="card-author"><div class="author-avatar">${c.owner[0].toUpperCase()}</div>${esc(c.owner)}</div>
+      <div class="card-author">${authorAvatarHtml}${esc(c.owner)}</div>
     </div>`;
   }).join('');
 }
-
-function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-window.deleteCard = async function(id) {
-  if (!confirm('Удалить объявление?')) return;
+ 
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+ 
+window.deleteCard=async function(id){
+  if(!confirm(t('deleteAdConfirm')+'?'))return;
   await dbRemove(`cards/${id}`);
-  showToast('Объявление удалено','success');
+  showToast(t('adDeleted'),'success');
 };
-
-window.adminDeleteCardById = async function(id) {
-  if (!confirm('Удалить объявление (администратор)?')) return;
+window.adminDeleteCardById=async function(id){
+  if(!confirm(t('deleteAdAdmin')))return;
   await dbRemove(`cards/${id}`);
-  renderAdminCards();
-  showToast('Объявление удалено','success');
+  if(typeof renderAdminCards==='function')renderAdminCards();
+  showToast(t('adDeleted'),'success');
 };
-
-window.editCard = function(id) {
-  const card = state.cards[id];
-  if (!card) return;
-  state.editingId = id;
-  openModal({...card, id});
+window.editCard=function(id){
+  const card=state.cards[id];if(!card)return;
+  state.editingId=id;openModal({...card,id});
 };
-
+ 
 // ══════════════════════════════════════════════
-//  MODAL
+//  MODAL CREATE / EDIT
 // ══════════════════════════════════════════════
-window.openModal = function(editData) {
-  state.selectedGame = null;
+window.openModal=function(editData){
+  state.selectedGame=null;
   ['game-error','contact-req','rules-err'].forEach(id=>document.getElementById(id).style.display='none');
-  document.getElementById('rules-agree').checked = false;
+  document.getElementById('rules-agree').checked=false;
   clearErrors();
   ['cs2-mode','cs2-rating','dota-mode','dota-rank','bs-trophies','bs-rank',
-   'mc-servertype','mc-platform','roblox-mode','rust-servertype','rust-wipe','gta-server','gta-role'
-  ].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
-  document.getElementById('contact-discord').value = '';
-  document.getElementById('contact-telegram').value = '';
+   'mc-servertype','mc-platform','roblox-mode','rust-servertype','rust-wipe','gta-server','gta-role']
+    .forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('contact-discord').value='';
+  document.getElementById('contact-telegram').value='';
   document.querySelectorAll('.game-opt').forEach(o=>o.classList.remove('selected'));
   ['cs2-fields','dota-fields','bs-fields','mc-fields','roblox-fields','rust-fields','gta-fields']
     .forEach(id=>document.getElementById(id).style.display='none');
-
-  if (editData) {
-    document.getElementById('modal-title').textContent = 'Редактировать объявление';
-    selectGame(editData.game, document.querySelector(`.game-opt[data-game="${editData.game}"]`));
-    if (editData.game==='CS2') {
-      document.getElementById('cs2-mode').value = editData.mode;
-      updateCS2Rating();
-      setTimeout(()=>{ document.getElementById('cs2-rating').value = editData.rank; },50);
-    } else if (editData.game==='Dota 2') {
-      document.getElementById('dota-mode').value = editData.mode;
-      document.getElementById('dota-rank').value = editData.rank;
-    } else if (editData.game==='Brawl Stars') {
-      const parts = editData.rank.split(' | ');
-      if (parts.length===2) { document.getElementById('bs-rank').value=parts[0]; document.getElementById('bs-trophies').value=parts[1]; }
-      else document.getElementById('bs-trophies').value=editData.rank;
-    } else if (editData.game==='Minecraft') {
-      document.getElementById('mc-servertype').value = editData.mode;
-      document.getElementById('mc-platform').value = editData.rank;
-    } else if (editData.game==='Roblox') {
-      document.getElementById('roblox-mode').value = editData.mode;
-    } else if (editData.game==='Rust') {
-      document.getElementById('rust-servertype').value = editData.mode;
-      document.getElementById('rust-wipe').value = editData.rank;
-    } else if (editData.game==='GTA 5 RP') {
-      document.getElementById('gta-server').value = editData.mode;
-      document.getElementById('gta-role').value = editData.rank;
-    }
-    document.getElementById('contact-discord').value  = editData.discord||'';
-    document.getElementById('contact-telegram').value = editData.telegram||'';
-    document.getElementById('rules-agree').checked = true;
-  } else {
-    state.editingId = null;
-    document.getElementById('modal-title').textContent = 'Найти тиммейта';
-  }
+  if(editData){
+    document.getElementById('modal-title').textContent=t('editAd');
+    selectGame(editData.game,document.querySelector(`.game-opt[data-game="${editData.game}"]`));
+    if(editData.game==='CS2'){document.getElementById('cs2-mode').value=editData.mode;updateCS2Rating();setTimeout(()=>{document.getElementById('cs2-rating').value=editData.rank;},50);}
+    else if(editData.game==='Dota 2'){document.getElementById('dota-mode').value=editData.mode;document.getElementById('dota-rank').value=editData.rank;}
+    else if(editData.game==='Brawl Stars'){const parts=editData.rank.split(' | ');if(parts.length===2){document.getElementById('bs-rank').value=parts[0];document.getElementById('bs-trophies').value=parts[1];}else document.getElementById('bs-trophies').value=editData.rank;}
+    else if(editData.game==='Minecraft'){document.getElementById('mc-servertype').value=editData.mode;document.getElementById('mc-platform').value=editData.rank;}
+    else if(editData.game==='Roblox'){document.getElementById('roblox-mode').value=editData.mode;}
+    else if(editData.game==='Rust'){document.getElementById('rust-servertype').value=editData.mode;document.getElementById('rust-wipe').value=editData.rank;}
+    else if(editData.game==='GTA 5 RP'){document.getElementById('gta-server').value=editData.mode;document.getElementById('gta-role').value=editData.rank;}
+    document.getElementById('contact-discord').value=editData.discord||'';
+    document.getElementById('contact-telegram').value=editData.telegram||'';
+    document.getElementById('rules-agree').checked=true;
+  }else{state.editingId=null;document.getElementById('modal-title').textContent=t('findTeammate');}
   document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 };
-
-window.closeModal = function() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-  state.editingId = null;
-};
-window.closeModalOutside = function(e) { if(e.target.id==='modal-overlay') closeModal(); };
-
-window.selectGame = function(game, el) {
-  state.selectedGame = game;
+window.closeModal=function(){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow='';state.editingId=null;};
+window.closeModalOutside=function(e){if(e.target.id==='modal-overlay')closeModal();};
+ 
+window.selectGame=function(game,el){
+  state.selectedGame=game;
   document.querySelectorAll('.game-opt').forEach(o=>o.classList.remove('selected'));
-  if (el) el.classList.add('selected');
-  ['cs2-fields','dota-fields','bs-fields','mc-fields','roblox-fields','rust-fields','gta-fields']
-    .forEach(id=>document.getElementById(id).style.display='none');
+  if(el)el.classList.add('selected');
+  ['cs2-fields','dota-fields','bs-fields','mc-fields','roblox-fields','rust-fields','gta-fields'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('game-error').style.display='none';
   const map={'CS2':'cs2','Dota 2':'dota','Brawl Stars':'bs','Minecraft':'mc','Roblox':'roblox','Rust':'rust','GTA 5 RP':'gta'};
-  if (map[game]) document.getElementById(`${map[game]}-fields`).style.display='';
+  if(map[game])document.getElementById(`${map[game]}-fields`).style.display='';
 };
-
-window.updateCS2Rating = function() {
+ 
+window.updateCS2Rating=function(){
   const mode=document.getElementById('cs2-mode').value;
   const sel=document.getElementById('cs2-rating');
   const label=document.getElementById('cs2-rating-label');
   sel.innerHTML='<option value="">Выберите</option>';
-  if (mode==='Premier'){label.textContent='Рейтинг Premier';['0 – 5 000','5 001 – 7 500','7 501 – 10 000','10 000 – 13 000','13 001 – 16 000','16 001 – 20 000','20 001+'].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;sel.appendChild(o);});}
+  if(mode==='Premier'){label.textContent='Рейтинг Premier';['0 – 5 000','5 001 – 7 500','7 501 – 10 000','10 000 – 13 000','13 001 – 16 000','16 001 – 20 000','20 001+'].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;sel.appendChild(o);});}
   else if(mode==='Faceit'){label.textContent='Уровень Faceit';for(let i=1;i<=10;i++){const o=document.createElement('option');o.value=`Faceit Level ${i}`;o.textContent=`Level ${i}`;sel.appendChild(o);}}
   else if(mode==='Matchmaking'){label.textContent='Ранг MM';['Silver I','Silver II','Silver III','Silver IV','Silver Elite','Silver Elite Master','Gold Nova I','Gold Nova II','Gold Nova III','Gold Nova Master','Master Guardian I','Master Guardian II','Master Guardian Elite','Distinguished Master Guardian','Legendary Eagle','Legendary Eagle Master','Supreme Master First Class','Global Elite'].forEach(r=>{const o=document.createElement('option');o.value=r;o.textContent=r;sel.appendChild(o);});}
   else if(mode==='Wingman'){label.textContent='Уровень Wingman';for(let i=1;i<=20;i++){const o=document.createElement('option');o.value=`Wingman Level ${i}`;o.textContent=`Level ${i}`;sel.appendChild(o);}}
   else{label.textContent='Рейтинг';sel.innerHTML='<option value="">Сначала выберите режим</option>';}
 };
-
-function clearErrors() {
+ 
+function clearErrors(){
   ['cs2-mode-err','cs2-rating-err','dota-mode-err','dota-rank-err','bs-trophies-err',
-   'mc-servertype-err','mc-platform-err','roblox-mode-err','rust-servertype-err','gta-server-err','discord-err','telegram-err'
-  ].forEach(id=>{const el=document.getElementById(id);if(el){el.style.display='none';el.textContent='';}});
+   'mc-servertype-err','mc-platform-err','roblox-mode-err','rust-servertype-err','gta-server-err','discord-err','telegram-err']
+    .forEach(id=>{const el=document.getElementById(id);if(el){el.style.display='none';el.textContent='';}});
 }
-
-function validateUrl(url,type) {
-  if (!url) return true;
-  try { const u=new URL(url); if(type==='discord') return u.hostname.includes('discord.'); if(type==='telegram') return u.hostname.includes('t.me')||u.hostname.includes('telegram.'); } catch{return false;}
+function validateUrl(url,type){
+  if(!url)return true;
+  try{const u=new URL(url);if(type==='discord')return u.hostname.includes('discord.');if(type==='telegram')return u.hostname.includes('t.me')||u.hostname.includes('telegram.');}catch{return false;}
   return true;
 }
-
-window.submitCard = async function() {
-  clearErrors();
-  let valid=true;
-  if (!state.selectedGame){document.getElementById('game-error').style.display='block';valid=false;}
+ 
+window.submitCard=async function(){
+  clearErrors();let valid=true;
+  if(!state.selectedGame){document.getElementById('game-error').style.display='block';valid=false;}
   let mode='',rank='';
-  if (state.selectedGame==='CS2'){mode=document.getElementById('cs2-mode').value;rank=document.getElementById('cs2-rating').value;if(!mode){document.getElementById('cs2-mode-err').style.display='block';valid=false;}if(!rank){document.getElementById('cs2-rating-err').style.display='block';valid=false;}}
+  if(state.selectedGame==='CS2'){mode=document.getElementById('cs2-mode').value;rank=document.getElementById('cs2-rating').value;if(!mode){document.getElementById('cs2-mode-err').style.display='block';valid=false;}if(!rank){document.getElementById('cs2-rating-err').style.display='block';valid=false;}}
   else if(state.selectedGame==='Dota 2'){mode=document.getElementById('dota-mode').value;rank=document.getElementById('dota-rank').value;if(!mode){document.getElementById('dota-mode-err').style.display='block';valid=false;}if(!rank){document.getElementById('dota-rank-err').style.display='block';valid=false;}}
-  else if(state.selectedGame==='Brawl Stars'){const t=document.getElementById('bs-trophies').value,r=document.getElementById('bs-rank').value;if(!t){document.getElementById('bs-trophies-err').style.display='block';valid=false;}mode='Рейтинговый';rank=r?`${r} | ${t}`:t;}
+  else if(state.selectedGame==='Brawl Stars'){const tt=document.getElementById('bs-trophies').value,r=document.getElementById('bs-rank').value;if(!tt){document.getElementById('bs-trophies-err').style.display='block';valid=false;}mode='Рейтинговый';rank=r?`${r} | ${tt}`:tt;}
   else if(state.selectedGame==='Minecraft'){mode=document.getElementById('mc-servertype').value;const plat=document.getElementById('mc-platform').value;if(!mode){document.getElementById('mc-servertype-err').style.display='block';valid=false;}if(!plat){document.getElementById('mc-platform-err').style.display='block';valid=false;}rank=plat;}
   else if(state.selectedGame==='Roblox'){mode=document.getElementById('roblox-mode').value;if(!mode){document.getElementById('roblox-mode-err').style.display='block';valid=false;}rank=mode;}
   else if(state.selectedGame==='Rust'){mode=document.getElementById('rust-servertype').value;rank=document.getElementById('rust-wipe').value||'—';if(!mode){document.getElementById('rust-servertype-err').style.display='block';valid=false;}}
   else if(state.selectedGame==='GTA 5 RP'){mode=document.getElementById('gta-server').value;rank=document.getElementById('gta-role').value||'Любая';if(!mode){document.getElementById('gta-server-err').style.display='block';valid=false;}}
-
   const discord=document.getElementById('contact-discord').value.trim();
   const telegram=document.getElementById('contact-telegram').value.trim();
   if(!discord&&!telegram){document.getElementById('contact-req').style.display='block';valid=false;}
-  if(discord&&!validateUrl(discord,'discord')){const el=document.getElementById('discord-err');el.textContent='Неверная ссылка Discord';el.style.display='block';valid=false;}
-  if(telegram&&!validateUrl(telegram,'telegram')){const el=document.getElementById('telegram-err');el.textContent='Неверная ссылка Telegram';el.style.display='block';valid=false;}
+  if(discord&&!validateUrl(discord,'discord')){const el=document.getElementById('discord-err');el.textContent=currentLang==='en'?'Invalid Discord link':currentLang==='ua'?'Невірне посилання Discord':'Неверная ссылка Discord';el.style.display='block';valid=false;}
+  if(telegram&&!validateUrl(telegram,'telegram')){const el=document.getElementById('telegram-err');el.textContent=currentLang==='en'?'Invalid Telegram link':currentLang==='ua'?'Невірне посилання Telegram':'Неверная ссылка Telegram';el.style.display='block';valid=false;}
   if(!document.getElementById('rules-agree').checked){document.getElementById('rules-err').style.display='block';valid=false;}
-  if(!valid) return;
-
-  const btn = document.getElementById('btn-submit-card');
-  btn.disabled=true; btn.textContent='Публикуем...';
-
-  try {
-    const cardData = {
-      owner: state.currentUser, game: state.selectedGame,
-      mode, rank, discord, telegram, createdAt: Date.now()
-    };
-    if (state.editingId) {
-      await dbUpdate(`cards/${state.editingId}`, cardData);
-      showToast('Объявление обновлено ✓','success');
-    } else {
-      await dbPush('cards', cardData);
-      showToast('Объявление опубликовано ✓','success');
-    }
+  if(!valid)return;
+  const btn=document.getElementById('btn-submit-card');
+  btn.disabled=true;btn.textContent=t('publishing');
+  try{
+    const cardData={owner:state.currentUser,game:state.selectedGame,mode,rank,discord,telegram,createdAt:Date.now()};
+    if(state.editingId){await dbUpdate(`cards/${state.editingId}`,cardData);showToast(t('adUpdated'),'success');}
+    else{await dbPush('cards',cardData);showToast(t('adPublished'),'success');}
     closeModal();
-  } catch(e) {
-    showToast('Ошибка. Проверьте интернет.','error');
-    console.error(e);
-  } finally {
-    btn.disabled=false; btn.textContent='Опубликовать';
-  }
+  }catch(e){showToast(t('netErr'),'error');console.error(e);}
+  finally{btn.disabled=false;btn.textContent=t('publish');}
 };
-
+ 
 // ══════════════════════════════════════════════
 //  REPORT MODAL
 // ══════════════════════════════════════════════
-let selectedReasonIdx = null;
-const REASONS = ['Шокирующий / 18+ контент','Скам (мошенничество)','Спам / реклама','Оскорбления / хейт','Фейковые контакты','Другое'];
-
-window.openReportModal = function(cardId) {
-  state.reportingCardId = cardId;
-  selectedReasonIdx = null;
+let selectedReasonIdx=null;
+const REASON_KEYS=['r0','r1','r2','r3','r4','r5','r6'];
+ 
+window.openReportModal=function(cardId){
+  state.reportingCardId=cardId;selectedReasonIdx=null;
   document.querySelectorAll('.report-reason-opt').forEach(el=>el.classList.remove('selected'));
   document.querySelectorAll('#report-overlay input[type=radio]').forEach(el=>el.checked=false);
   document.getElementById('report-comment').value='';
@@ -1020,248 +1239,197 @@ window.openReportModal = function(cardId) {
   document.getElementById('report-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 };
-window.closeReportModal = function() { document.getElementById('report-overlay').classList.remove('open'); document.body.style.overflow=''; };
-window.closeReportOutside = function(e) { if(e.target.id==='report-overlay') closeReportModal(); };
-window.selectReason = function(idx) {
+window.closeReportModal=function(){document.getElementById('report-overlay').classList.remove('open');document.body.style.overflow='';};
+window.closeReportOutside=function(e){if(e.target.id==='report-overlay')closeReportModal();};
+window.selectReason=function(idx){
   selectedReasonIdx=idx;
   document.querySelectorAll('.report-reason-opt').forEach((el,i)=>el.classList.toggle('selected',i===idx));
 };
-
-window.submitReport = async function() {
-  if (selectedReasonIdx===null) { document.getElementById('report-reason-err').style.display='block'; return; }
-  const card = state.cards[state.reportingCardId];
-  try {
-    await dbPush('reports', {
-      cardId: state.reportingCardId,
-      cardOwner: card ? card.owner : '?',
-      cardGame:  card ? card.game  : '?',
-      reason:    REASONS[selectedReasonIdx],
-      comment:   document.getElementById('report-comment').value.trim(),
-      by:        state.currentUser,
-      createdAt: Date.now(),
-      dismissed: false
+ 
+window.submitReport=async function(){
+  if(selectedReasonIdx===null){document.getElementById('report-reason-err').style.display='block';return;}
+  const card=state.cards[state.reportingCardId];
+  try{
+    await dbPush('reports',{
+      cardId:state.reportingCardId,cardOwner:card?card.owner:'?',cardGame:card?card.game:'?',
+      reason:t(REASON_KEYS[selectedReasonIdx]),
+      comment:document.getElementById('report-comment').value.trim(),
+      by:state.currentUser,createdAt:Date.now(),dismissed:false
     });
-    closeReportModal();
-    showToast('Жалоба отправлена администратору','success');
-    if (state.isAdmin) updateAdminBadge();
-  } catch(e) {
-    showToast('Ошибка отправки жалобы','error');
-  }
+    closeReportModal();showToast(t('reportSent'),'success');
+    if(state.isAdmin)updateAdminBadge();
+  }catch(e){showToast(t('reportErr'),'error');}
 };
-
+ 
 // ══════════════════════════════════════════════
-//  ADMIN PANEL
+//  ADMIN
 // ══════════════════════════════════════════════
-async function updateAdminBadge() {
-  const reports = await dbGet('reports') || {};
-  const cnt = Object.values(reports).filter(r=>!r.dismissed).length;
-  const dot = document.getElementById('admin-notif-dot');
-  if (dot) dot.style.display = cnt>0 ? 'block' : 'none';
+async function updateAdminBadge(){
+  const reports=await dbGet('reports')||{};
+  const cnt=Object.values(reports).filter(r=>!r.dismissed).length;
+  const dot=document.getElementById('admin-notif-dot');
+  if(dot)dot.style.display=cnt>0?'block':'none';
 }
-
-window.openAdmin = async function() {
+ 
+window.openAdmin=async function(){
   document.getElementById('app').style.display='none';
   document.getElementById('admin-panel').style.display='block';
-
-  // Load all data fresh
-  const [users, cards, bans, reports] = await Promise.all([
-    dbGet('users')   || {},
-    dbGet('cards')   || {},
-    dbGet('bans')    || {},
-    dbGet('reports') || {}
-  ]);
-  state.users   = users   || {};
-  state.cards   = cards   || {};
-  state.bans    = bans    || {};
-  state.reports = reports || {};
-
-  const cnt = Object.values(state.reports).filter(r=>!r.dismissed).length;
-  const rb = document.getElementById('reports-badge');
-  rb.textContent=cnt; rb.style.display=cnt>0?'flex':'none';
-
-  renderAdminReports();
-  renderAdminUsers();
-  renderAdminCards();
+  const [users,cards,bans,reports]=await Promise.all([dbGet('users'),dbGet('cards'),dbGet('bans'),dbGet('reports')]);
+  state.users=users||{};state.cards=cards||{};state.bans=bans||{};state.reports=reports||{};
+  const cnt=Object.values(state.reports).filter(r=>!r.dismissed).length;
+  const rb=document.getElementById('reports-badge');rb.textContent=cnt;rb.style.display=cnt>0?'flex':'none';
+  renderAdminReports();renderAdminUsers();renderAdminCards();
+  applyLang();
 };
-
-window.closeAdmin = function() {
+ 
+window.closeAdmin=function(){
   document.getElementById('admin-panel').style.display='none';
-  document.getElementById('app').style.display='block';
+  document.getElementById('app').style.display='flex';
   renderCards();
 };
-
-window.switchAdminTab = function(tab,el) {
+ 
+window.switchAdminTab=function(tab,el){
   document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
   document.getElementById(`admin-${tab}`).classList.add('active');
 };
-
-function renderAdminReports() {
-  const list = document.getElementById('reports-list');
-  const reports = Object.entries(state.reports).map(([id,r])=>({...r,id})).sort((a,b)=>b.createdAt-a.createdAt);
-  if (!reports.length) { list.innerHTML='<p style="color:var(--muted);font-size:14px;padding:1rem 0">Жалоб пока нет.</p>'; return; }
-  list.innerHTML = reports.map(r=>`
+ 
+function renderAdminReports(){
+  const list=document.getElementById('reports-list');
+  const reports=Object.entries(state.reports).map(([id,r])=>({...r,id})).sort((a,b)=>b.createdAt-a.createdAt);
+  if(!reports.length){list.innerHTML=`<p style="color:var(--muted);font-size:14px;padding:1rem 0">${t('noReports')}</p>`;return;}
+  list.innerHTML=reports.map(r=>`
     <div class="report-card ${r.dismissed?'report-dismissed':''}">
       <div class="report-card-top">
         <div><span class="report-card-user">@${esc(r.cardOwner)}</span><span style="color:var(--muted);font-size:12px;margin-left:.5rem">· ${esc(r.cardGame)}</span></div>
         <span class="report-card-reason">${esc(r.reason)}</span>
       </div>
-      <div class="report-card-meta">От: @${esc(r.by)} · ${new Date(r.createdAt).toLocaleString('ru')}</div>
+      <div class="report-card-meta">${currentLang==='en'?'From':'От'}: @${esc(r.by)} · ${new Date(r.createdAt).toLocaleString(currentLang==='ua'?'uk':currentLang==='en'?'en-GB':'ru')}</div>
       ${r.comment?`<div style="font-size:13px;color:var(--muted2);margin-bottom:.5rem">${esc(r.comment)}</div>`:''}
       ${!r.dismissed?`<div class="admin-actions">
-        <button class="btn-ban" onclick="adminBanFromReport('${r.id}')">🚫 Забанить</button>
-        <button class="btn-del-card" onclick="adminDeleteFromReport('${r.id}')">🗑 Удалить объявление</button>
-        <button class="btn-dismiss" onclick="dismissReport('${r.id}')">Отклонить</button>
-      </div>`:`<span style="font-size:12px;color:var(--muted)">Рассмотрено</span>`}
+        <button class="btn-ban" onclick="adminBanFromReport('${r.id}')">${t('banFromReport')}</button>
+        <button class="btn-del-card" onclick="adminDeleteFromReport('${r.id}')">${t('deleteFromReport')}</button>
+        <button class="btn-dismiss" onclick="dismissReport('${r.id}')">${t('dismiss')}</button>
+      </div>`:`<span style="font-size:12px;color:var(--muted)">${t('reviewed')}</span>`}
     </div>`).join('');
 }
-
-window.dismissReport = async function(id) {
-  await dbUpdate(`reports/${id}`, {dismissed:true});
-  state.reports[id].dismissed = true;
-  renderAdminReports();
-  updateAdminBadge();
-  const cnt = Object.values(state.reports).filter(r=>!r.dismissed).length;
-  const rb=document.getElementById('reports-badge'); rb.textContent=cnt; rb.style.display=cnt>0?'flex':'none';
+ 
+window.dismissReport=async function(id){
+  await dbUpdate(`reports/${id}`,{dismissed:true});
+  state.reports[id].dismissed=true;renderAdminReports();updateAdminBadge();
+  const cnt=Object.values(state.reports).filter(r=>!r.dismissed).length;
+  const rb=document.getElementById('reports-badge');rb.textContent=cnt;rb.style.display=cnt>0?'flex':'none';
 };
-
-window.adminBanFromReport = function(reportId) {
-  const r = state.reports[reportId];
-  if (r) openBanModal(r.cardOwner);
+window.adminBanFromReport=function(rid){const r=state.reports[rid];if(r)openBanModal(r.cardOwner);};
+window.adminDeleteFromReport=async function(rid){
+  const r=state.reports[rid];if(!r)return;
+  if(!state.cards[r.cardId]){showToast(t('adAlreadyDeleted'),'error');return;}
+  if(!confirm(t('deleteAdPrompt')+r.cardOwner+'?'))return;
+  await Promise.all([dbRemove(`cards/${r.cardId}`),dbUpdate(`reports/${rid}`,{dismissed:true})]);
+  state.reports[rid].dismissed=true;renderAdminReports();renderAdminCards();
+  showToast(t('adDeleted'),'success');
 };
-
-window.adminDeleteFromReport = async function(reportId) {
-  const r = state.reports[reportId];
-  if (!r) return;
-  if (!state.cards[r.cardId]) { showToast('Объявление уже удалено','error'); return; }
-  if (!confirm(`Удалить объявление @${r.cardOwner}?`)) return;
-  await Promise.all([
-    dbRemove(`cards/${r.cardId}`),
-    dbUpdate(`reports/${reportId}`, {dismissed:true})
-  ]);
-  state.reports[reportId].dismissed = true;
-  renderAdminReports(); renderAdminCards();
-  showToast('Объявление удалено','success');
-};
-
-function renderAdminUsers() {
-  const tbody = document.getElementById('admin-users-body');
-  const users = Object.entries(state.users);
-  if (!users.length) { tbody.innerHTML='<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:1.5rem">Нет пользователей</td></tr>'; return; }
-  tbody.innerHTML = users.map(([u, uData])=>{
-    const ban = state.bans[u];
-    const isBanned = getBanStatus(ban);
-    const cardCount = Object.values(state.cards).filter(c=>c.owner===u).length;
-    const createdAt = uData && uData.createdAt ? new Date(uData.createdAt).toLocaleDateString('ru') : '—';
-    const banLabel = isBanned
-      ? `<span class="badge-ban active">Забанен${ban.permanent?' навсегда':' до '+new Date(ban.until).toLocaleDateString('ru')}</span>`
-      : `<span class="badge-ban ok">Активен</span>`;
+ 
+function renderAdminUsers(){
+  const tbody=document.getElementById('admin-users-body');
+  const users=Object.entries(state.users);
+  if(!users.length){tbody.innerHTML=`<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:1.5rem">${t('noUsers')}</td></tr>`;return;}
+  tbody.innerHTML=users.map(([u,ud])=>{
+    const ban=state.bans[u];const isBanned=getBanStatus(ban);
+    const cardCount=Object.values(state.cards).filter(c=>c.owner===u).length;
+    const createdAt=ud&&ud.createdAt?new Date(ud.createdAt).toLocaleDateString(currentLang==='ua'?'uk':currentLang==='en'?'en-GB':'ru'):'—';
+    const banLabel=isBanned
+      ?`<span class="badge-ban active">${t('banned')}${ban.permanent?t('blockedForever'):t('blockedUntil')+new Date(ban.until).toLocaleDateString()}</span>`
+      :`<span class="badge-ban ok">${t('active')}</span>`;
     return `<tr>
-      <td class="user-cell">${esc(u)}<br><span style="font-size:11px;color:var(--muted)">рег. ${createdAt}</span></td>
+      <td class="user-cell">${esc(u)}<br><span style="font-size:11px;color:var(--muted)">${t('regSince')} ${createdAt}</span></td>
       <td>${cardCount}</td><td>${banLabel}</td>
       <td><div class="admin-actions">
-        ${isBanned
-          ? `<button class="btn-unban" onclick="unbanUser('${u}')">✓ Разбанить</button>`
-          : `<button class="btn-ban" onclick="openBanModal('${u}')">🚫 Забанить</button>`}
-        <button class="btn-del-card" onclick="adminDeleteUserCards('${u}')">Удалить объявления</button>
+        ${isBanned?`<button class="btn-unban" onclick="unbanUser('${u}')">${t('unbanBtn')}</button>`:`<button class="btn-ban" onclick="openBanModal('${u}')">${t('banFromReport')}</button>`}
+        <button class="btn-del-card" onclick="adminDeleteUserCards('${u}')">${t('deleteAdsUser')}</button>
       </div></td>
     </tr>`;
   }).join('');
 }
-
-function renderAdminCards() {
-  const tbody = document.getElementById('admin-cards-body');
-  const cards = Object.entries(state.cards).map(([id,c])=>({...c,id})).sort((a,b)=>b.createdAt-a.createdAt);
-  if (!cards.length) { tbody.innerHTML='<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:1.5rem">Нет объявлений</td></tr>'; return; }
-  tbody.innerHTML = cards.map(c=>`<tr>
+ 
+function renderAdminCards(){
+  const tbody=document.getElementById('admin-cards-body');
+  const cards=Object.entries(state.cards).map(([id,c])=>({...c,id})).sort((a,b)=>b.createdAt-a.createdAt);
+  if(!cards.length){tbody.innerHTML=`<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:1.5rem">${t('noAdsAdmin')}</td></tr>`;return;}
+  tbody.innerHTML=cards.map(c=>`<tr>
     <td class="user-cell">@${esc(c.owner)}</td><td>${esc(c.game)}</td><td>${esc(c.mode)}</td><td>${esc(c.rank)}</td>
-    <td><button class="btn-del-card" onclick="adminDeleteCardById('${c.id}');renderAdminCards()">Удалить</button></td>
+    <td><button class="btn-del-card" onclick="adminDeleteCardById('${c.id}');renderAdminCards()">${t('deleteAd')}</button></td>
   </tr>`).join('');
 }
-
-window.adminDeleteUserCards = async function(u) {
-  if (!confirm(`Удалить все объявления @${u}?`)) return;
-  const toDelete = Object.entries(state.cards).filter(([,c])=>c.owner===u).map(([id])=>id);
+ 
+window.adminDeleteUserCards=async function(u){
+  if(!confirm(t('deleteAdsPrompt')+u+'?'))return;
+  const toDelete=Object.entries(state.cards).filter(([,c])=>c.owner===u).map(([id])=>id);
   await Promise.all(toDelete.map(id=>dbRemove(`cards/${id}`)));
-  renderAdminCards(); renderAdminUsers();
-  showToast('Объявления удалены','success');
+  renderAdminCards();renderAdminUsers();showToast(t('adsDeleted'),'success');
 };
-
-window.unbanUser = async function(u) {
-  await dbRemove(`bans/${u}`);
-  delete state.bans[u];
-  renderAdminUsers();
-  showToast(`@${u} разбанен`,'success');
+window.unbanUser=async function(u){
+  await dbRemove(`bans/${u}`);delete state.bans[u];renderAdminUsers();showToast(`@${u} ${t('unbanned')}`,'success');
 };
-
+ 
 // ══════════════════════════════════════════════
 //  BAN MODAL
 // ══════════════════════════════════════════════
-window.openBanModal = function(username) {
-  state.banTargetUser = username;
-  state.banDuration = null;
-  document.getElementById('ban-target-name').textContent = username;
-  document.getElementById('ban-reason-input').value = '';
+window.openBanModal=function(username){
+  state.banTargetUser=username;state.banDuration=null;
+  document.getElementById('ban-target-name').textContent=username;
+  document.getElementById('ban-reason-input').value='';
   document.getElementById('ban-dur-err').style.display='none';
   document.querySelectorAll('.ban-dur-opt').forEach(el=>el.classList.remove('selected'));
   document.getElementById('ban-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 };
-window.closeBanModal = function() { document.getElementById('ban-overlay').classList.remove('open'); document.body.style.overflow=''; };
-window.closeBanOutside = function(e) { if(e.target.id==='ban-overlay') closeBanModal(); };
-window.selectDur = function(el) {
+window.closeBanModal=function(){document.getElementById('ban-overlay').classList.remove('open');document.body.style.overflow='';};
+window.closeBanOutside=function(e){if(e.target.id==='ban-overlay')closeBanModal();};
+window.selectDur=function(el){
   document.querySelectorAll('.ban-dur-opt').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
-  state.banDuration = parseInt(el.dataset.dur);
+  el.classList.add('selected');state.banDuration=parseInt(el.dataset.dur);
 };
-
-window.confirmBan = async function() {
-  if (state.banDuration===null){document.getElementById('ban-dur-err').style.display='block';return;}
+window.confirmBan=async function(){
+  if(state.banDuration===null){document.getElementById('ban-dur-err').style.display='block';return;}
   const reason=document.getElementById('ban-reason-input').value.trim();
   const u=state.banTargetUser;
-  const banData = state.banDuration===0
-    ? {permanent:true, reason, bannedAt:Date.now()}
-    : {permanent:false, until:Date.now()+state.banDuration, reason, bannedAt:Date.now()};
-  await dbSet(`bans/${u}`, banData);
-  state.bans[u] = banData;
-  closeBanModal();
-  renderAdminUsers();
-  showToast(`@${u} заблокирован`,'success');
+  const banData=state.banDuration===0?{permanent:true,reason,bannedAt:Date.now()}:{permanent:false,until:Date.now()+state.banDuration,reason,bannedAt:Date.now()};
+  await dbSet(`bans/${u}`,banData);state.bans[u]=banData;
+  closeBanModal();renderAdminUsers();showToast(`@${u} ${currentLang==='en'?'banned':currentLang==='ua'?'заблокований':'заблокирован'}`,'success');
 };
-
+ 
 // ══════════════════════════════════════════════
 //  TOAST
 // ══════════════════════════════════════════════
 let toastTimer;
-function showToast(msg,type='success') {
+function showToast(msg,type='success'){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.className=`toast ${type}`; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
+  t.textContent=msg;t.className=`toast ${type}`;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
 }
-
+ 
 // Enter on auth
 document.addEventListener('keydown',e=>{
   if(e.key==='Enter'){
     const auth=document.getElementById('auth-screen');
     if(auth.style.display!=='none'){
-      if(document.getElementById('login-form').style.display!=='none') doLogin();
-      else doRegister();
+      if(document.getElementById('login-form').style.display!=='none')doLogin();else doRegister();
     }
   }
 });
-
+ 
 // ══════════════════════════════════════════════
 //  START
 // ══════════════════════════════════════════════
-init().catch(err => {
-  console.error('Init error:', err);
-  document.getElementById('global-loader').innerHTML =
-    '<div style="color:#F04040;font-family:Inter,sans-serif;text-align:center;padding:2rem">' +
-    '<div style="font-size:2rem;margin-bottom:1rem">⚠️</div>' +
-    '<div style="font-size:1rem;margin-bottom:.5rem">Ошибка подключения к базе данных</div>' +
-    '<div style="font-size:13px;color:#6B7A99">Убедитесь что Realtime Database создана в Firebase Console<br>и правила доступа настроены (тестовый режим)</div>' +
+init().catch(err=>{
+  console.error('Init error:',err);
+  document.getElementById('global-loader').innerHTML=
+    '<div style="color:#F04040;font-family:Inter,sans-serif;text-align:center;padding:2rem">'+
+    '<div style="font-size:2rem;margin-bottom:1rem">⚠️</div>'+
+    '<div style="font-size:1rem;margin-bottom:.5rem">Ошибка подключения к базе данных</div>'+
+    '<div style="font-size:13px;color:#6B7A99">Убедитесь что Realtime Database создана в Firebase Console<br>и правила доступа настроены (тестовый режим)</div>'+
     '</div>';
 });
 </script>
