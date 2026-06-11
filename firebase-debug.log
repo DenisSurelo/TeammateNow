@@ -1,0 +1,128 @@
+[debug] [2026-06-11T11:17:05.646Z] ----------------------------------------------------------------------
+[debug] [2026-06-11T11:17:05.650Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-06-11T11:17:05.650Z] CLI Version:   15.20.0
+[debug] [2026-06-11T11:17:05.650Z] Platform:      win32
+[debug] [2026-06-11T11:17:05.650Z] Node Version:  v22.16.0
+[debug] [2026-06-11T11:17:05.651Z] Time:          Thu Jun 11 2026 14:17:05 GMT+0300 (Восточная Европа, летнее время)
+[debug] [2026-06-11T11:17:05.651Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Denya\OneDrive\Рабочий стол\frontend проекти\TeammateNow
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2026-06-11T11:17:24.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-11T11:17:24.830Z] > authorizing via signed-in user (denisgod2011@gmail.com)
+[debug] [2026-06-11T11:18:12.372Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:12.373Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:12.375Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-06-11T11:18:12.375Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"fb-teammnow"}
+[debug] [2026-06-11T11:18:13.010Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-06-11T11:18:13.010Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_AVAILABLE","suggestedProjectId":"fb-teammnow"}
+[debug] [2026-06-11T11:18:25.361Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:25.361Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:25.362Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-06-11T11:18:25.362Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"fb-teammnow","name":"TeammateNow"}
+[debug] [2026-06-11T11:18:25.946Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-06-11T11:18:25.946Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.5914925109242674432"}
+[debug] [2026-06-11T11:18:25.947Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:25.947Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:18:25.948Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5914925109242674432 [none]
+[debug] [2026-06-11T11:18:27.146Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5914925109242674432 200
+[debug] [2026-06-11T11:18:27.147Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5914925109242674432 {"name":"operations/create_project.global.5914925109242674432","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","ready":true},"done":true,"error":{"code":9,"message":"Callers must accept Terms of Service","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"TOS","subject":"cloud","description":"Callers must accept Terms of Service"}]}]}}
+[debug] [2026-06-11T11:18:27.464Z] FirebaseError: Callers must accept Terms of Service
+    at OperationPoller.poll (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:25:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createCloudProject (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:237:29)
+    at async createFirebaseProjectAndLog (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:102:9)
+    at async Object.doSetup (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:64:24)
+    at async init (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:98:13)
+    at async Command.initAction [as actionFn] (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\init.js:232:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2026-06-11T11:18:49.095Z] ----------------------------------------------------------------------
+[debug] [2026-06-11T11:18:49.098Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-06-11T11:18:49.099Z] CLI Version:   15.20.0
+[debug] [2026-06-11T11:18:49.099Z] Platform:      win32
+[debug] [2026-06-11T11:18:49.099Z] Node Version:  v22.16.0
+[debug] [2026-06-11T11:18:49.099Z] Time:          Thu Jun 11 2026 14:18:49 GMT+0300 (Восточная Европа, летнее время)
+[debug] [2026-06-11T11:18:49.099Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Denya\OneDrive\Рабочий стол\frontend проекти\TeammateNow
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2026-06-11T11:19:04.483Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-11T11:19:04.484Z] > authorizing via signed-in user (denisgod2011@gmail.com)
+[debug] [2026-06-11T11:19:19.715Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:19.715Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:19.717Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-06-11T11:19:19.718Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"fb-temNow"}
+[debug] [2026-06-11T11:19:20.344Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-06-11T11:19:20.344Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"fb-temnow"}
+[debug] [2026-06-11T11:19:30.275Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:30.275Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:30.276Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-06-11T11:19:30.276Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"fb-teameNow"}
+[debug] [2026-06-11T11:19:30.829Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-06-11T11:19:30.829Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"fb-teamenow"}
+[debug] [2026-06-11T11:19:41.527Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:41.527Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:41.528Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-06-11T11:19:41.528Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"fb-team"}
+[debug] [2026-06-11T11:19:42.115Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-06-11T11:19:42.115Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_UNAVAILABLE","suggestedProjectId":"fb-team-81bc9"}
+[debug] [2026-06-11T11:19:50.787Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:50.787Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:50.788Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-06-11T11:19:50.788Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"fb-team-81fb"}
+[debug] [2026-06-11T11:19:51.312Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-06-11T11:19:51.312Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_AVAILABLE","suggestedProjectId":"fb-team-81fb"}
+[debug] [2026-06-11T11:19:53.441Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:53.441Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:53.442Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-06-11T11:19:53.442Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"fb-team-81fb","name":"fb-team-81fb"}
+[debug] [2026-06-11T11:19:53.956Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-06-11T11:19:53.956Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.6147979528979759535"}
+[debug] [2026-06-11T11:19:53.957Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:53.957Z] Checked if tokens are valid: true, expires at: 1781179927861
+[debug] [2026-06-11T11:19:53.958Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6147979528979759535 [none]
+[debug] [2026-06-11T11:19:54.820Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6147979528979759535 200
+[debug] [2026-06-11T11:19:54.820Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6147979528979759535 {"name":"operations/create_project.global.6147979528979759535","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","ready":true},"done":true,"error":{"code":9,"message":"Callers must accept Terms of Service","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"TOS","subject":"cloud","description":"Callers must accept Terms of Service"}]}]}}
+[debug] [2026-06-11T11:19:55.169Z] FirebaseError: Callers must accept Terms of Service
+    at OperationPoller.poll (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:25:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createCloudProject (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:237:29)
+    at async createFirebaseProjectAndLog (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:102:9)
+    at async Object.doSetup (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:64:24)
+    at async init (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:98:13)
+    at async Command.initAction [as actionFn] (C:\Users\Denya\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\init.js:232:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
